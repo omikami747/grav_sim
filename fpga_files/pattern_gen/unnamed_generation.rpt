@@ -1,0 +1,65 @@
+Info: Starting: Create simulation model
+Info: qsys-generate /home/kali/FPGAprojects/sdramtst/unnamed.qsys --simulation=VERILOG --allow-mixed-language-simulation --output-directory=/home/kali/projects/grav_grp_proj/fpga_files/pattern_gen/simulation --family="MAX 10" --part=10M50DAF484C7G
+Progress: Loading sdramtst/unnamed.qsys
+Progress: Reading input file
+Progress: Adding data_pattern_generator_0 [altera_avalon_data_pattern_generator 22.1]
+Progress: Parameterizing module data_pattern_generator_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: unnamed: Generating unnamed "unnamed" for SIM_VERILOG
+Info: data_pattern_generator_0: "unnamed" instantiated altera_avalon_data_pattern_generator "data_pattern_generator_0"
+Info: data_pattern_generator: "data_pattern_generator_0" instantiated altera_avalon_data_pattern_generator_core "data_pattern_generator"
+Info: unnamed: Done "unnamed" with 3 modules, 5 files
+Info: qsys-generate succeeded.
+Info: Finished: Create simulation model
+Info: Starting: Create Modelsim Project.
+Info: sim-script-gen --spd=/home/kali/projects/grav_grp_proj/fpga_files/pattern_gen/unnamed.spd --output-directory=/home/kali/projects/grav_grp_proj/fpga_files/pattern_gen/simulation/ --use-relative-paths=true
+Info: Doing: ip-make-simscript --spd=/home/kali/projects/grav_grp_proj/fpga_files/pattern_gen/unnamed.spd --output-directory=/home/kali/projects/grav_grp_proj/fpga_files/pattern_gen/simulation/ --use-relative-paths=true
+Info: Generating the following file(s) for XCELIUM simulator in /home/kali/projects/grav_grp_proj/fpga_files/pattern_gen/simulation/ directory:
+Info: 	xcelium/cds.lib
+Info: 	xcelium/hdl.var
+Info: 	xcelium/xcelium_setup.sh
+Info: 	2 .cds.lib files in xcelium/cds_libs/ directory
+Info: Generating the following file(s) for VCS simulator in /home/kali/projects/grav_grp_proj/fpga_files/pattern_gen/simulation/ directory:
+Info: 	synopsys/vcs/vcs_setup.sh
+Info: Generating the following file(s) for VCSMX simulator in /home/kali/projects/grav_grp_proj/fpga_files/pattern_gen/simulation/ directory:
+Info: 	synopsys/vcsmx/synopsys_sim.setup
+Info: 	synopsys/vcsmx/vcsmx_setup.sh
+Info: Generating the following file(s) for RIVIERA simulator in /home/kali/projects/grav_grp_proj/fpga_files/pattern_gen/simulation/ directory:
+Info: 	aldec/rivierapro_setup.tcl
+Info: Generating the following file(s) for MODELSIM simulator in /home/kali/projects/grav_grp_proj/fpga_files/pattern_gen/simulation/ directory:
+Info: 	mentor/msim_setup.tcl
+Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under /home/kali/projects/grav_grp_proj/fpga_files/pattern_gen/simulation/.
+Info: Regenerate these scripts whenever you make any change to any Quartus-generated IP in your project.
+Info: Finished: Create Modelsim Project.
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate /home/kali/FPGAprojects/sdramtst/unnamed.qsys --block-symbol-file --output-directory=/home/kali/projects/grav_grp_proj/fpga_files/pattern_gen --family="MAX 10" --part=10M50DAF484C7G
+Progress: Loading sdramtst/unnamed.qsys
+Progress: Reading input file
+Progress: Adding data_pattern_generator_0 [altera_avalon_data_pattern_generator 22.1]
+Progress: Parameterizing module data_pattern_generator_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: qsys-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate /home/kali/FPGAprojects/sdramtst/unnamed.qsys --synthesis=VERILOG --output-directory=/home/kali/projects/grav_grp_proj/fpga_files/pattern_gen/synthesis --family="MAX 10" --part=10M50DAF484C7G
+Progress: Loading sdramtst/unnamed.qsys
+Progress: Reading input file
+Progress: Adding data_pattern_generator_0 [altera_avalon_data_pattern_generator 22.1]
+Progress: Parameterizing module data_pattern_generator_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: unnamed: Generating unnamed "unnamed" for QUARTUS_SYNTH
+Info: data_pattern_generator_0: "unnamed" instantiated altera_avalon_data_pattern_generator "data_pattern_generator_0"
+Info: data_pattern_generator: "data_pattern_generator_0" instantiated altera_avalon_data_pattern_generator_core "data_pattern_generator"
+Info: unnamed: Done "unnamed" with 3 modules, 6 files
+Info: qsys-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

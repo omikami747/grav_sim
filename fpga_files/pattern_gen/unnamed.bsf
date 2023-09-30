@@ -1,0 +1,149 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 2022  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+*/
+(header "symbol" (version "1.1"))
+(symbol
+	(rect 0 0 384 304)
+	(text "unnamed" (rect 166 -1 202 11)(font "Arial" (font_size 10)))
+	(text "inst" (rect 8 288 20 300)(font "Arial" ))
+	(port
+		(pt 0 72)
+		(input)
+		(text "csr_clk_clk" (rect 0 0 46 12)(font "Arial" (font_size 8)))
+		(text "csr_clk_clk" (rect 4 61 70 72)(font "Arial" (font_size 8)))
+		(line (pt 0 72)(pt 144 72)(line_width 1))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "csr_slave_address[2..0]" (rect 0 0 97 12)(font "Arial" (font_size 8)))
+		(text "csr_slave_address[2..0]" (rect 4 101 142 112)(font "Arial" (font_size 8)))
+		(line (pt 0 112)(pt 144 112)(line_width 3))
+	)
+	(port
+		(pt 0 128)
+		(input)
+		(text "csr_slave_write" (rect 0 0 63 12)(font "Arial" (font_size 8)))
+		(text "csr_slave_write" (rect 4 117 94 128)(font "Arial" (font_size 8)))
+		(line (pt 0 128)(pt 144 128)(line_width 1))
+	)
+	(port
+		(pt 0 144)
+		(input)
+		(text "csr_slave_read" (rect 0 0 63 12)(font "Arial" (font_size 8)))
+		(text "csr_slave_read" (rect 4 133 88 144)(font "Arial" (font_size 8)))
+		(line (pt 0 144)(pt 144 144)(line_width 1))
+	)
+	(port
+		(pt 0 160)
+		(input)
+		(text "csr_slave_byteenable[3..0]" (rect 0 0 108 12)(font "Arial" (font_size 8)))
+		(text "csr_slave_byteenable[3..0]" (rect 4 149 160 160)(font "Arial" (font_size 8)))
+		(line (pt 0 160)(pt 144 160)(line_width 3))
+	)
+	(port
+		(pt 0 176)
+		(input)
+		(text "csr_slave_writedata[31..0]" (rect 0 0 103 12)(font "Arial" (font_size 8)))
+		(text "csr_slave_writedata[31..0]" (rect 4 165 160 176)(font "Arial" (font_size 8)))
+		(line (pt 0 176)(pt 144 176)(line_width 3))
+	)
+	(port
+		(pt 384 88)
+		(input)
+		(text "aso_ready" (rect 0 0 43 12)(font "Arial" (font_size 8)))
+		(text "aso_ready" (rect 329 77 383 88)(font "Arial" (font_size 8)))
+		(line (pt 384 88)(pt 240 88)(line_width 1))
+	)
+	(port
+		(pt 0 232)
+		(input)
+		(text "pattern_out_clk_clk" (rect 0 0 77 12)(font "Arial" (font_size 8)))
+		(text "pattern_out_clk_clk" (rect 4 221 118 232)(font "Arial" (font_size 8)))
+		(line (pt 0 232)(pt 144 232)(line_width 1))
+	)
+	(port
+		(pt 0 272)
+		(input)
+		(text "reset_reset" (rect 0 0 46 12)(font "Arial" (font_size 8)))
+		(text "reset_reset" (rect 4 261 70 272)(font "Arial" (font_size 8)))
+		(line (pt 0 272)(pt 144 272)(line_width 1))
+	)
+	(port
+		(pt 0 192)
+		(output)
+		(text "csr_slave_readdata[31..0]" (rect 0 0 103 12)(font "Arial" (font_size 8)))
+		(text "csr_slave_readdata[31..0]" (rect 4 181 154 192)(font "Arial" (font_size 8)))
+		(line (pt 0 192)(pt 144 192)(line_width 3))
+	)
+	(port
+		(pt 384 72)
+		(output)
+		(text "aso_valid" (rect 0 0 37 12)(font "Arial" (font_size 8)))
+		(text "aso_valid" (rect 335 61 389 72)(font "Arial" (font_size 8)))
+		(line (pt 384 72)(pt 240 72)(line_width 1))
+	)
+	(port
+		(pt 384 104)
+		(output)
+		(text "aso_data[39..0]" (rect 0 0 61 12)(font "Arial" (font_size 8)))
+		(text "aso_data[39..0]" (rect 306 93 396 104)(font "Arial" (font_size 8)))
+		(line (pt 384 104)(pt 240 104)(line_width 3))
+	)
+	(drawing
+		(text "csr_clk" (rect 103 43 248 99)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "clk" (rect 149 67 316 144)(font "Arial" (color 0 0 0)))
+		(text "csr_slave" (rect 89 83 232 179)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "address" (rect 149 107 340 224)(font "Arial" (color 0 0 0)))
+		(text "write" (rect 149 123 328 256)(font "Arial" (color 0 0 0)))
+		(text "read" (rect 149 139 322 288)(font "Arial" (color 0 0 0)))
+		(text "byteenable" (rect 149 155 358 320)(font "Arial" (color 0 0 0)))
+		(text "writedata" (rect 149 171 352 352)(font "Arial" (color 0 0 0)))
+		(text "readdata" (rect 149 187 346 384)(font "Arial" (color 0 0 0)))
+		(text "pattern_out" (rect 241 43 548 99)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "valid" (rect 217 67 464 144)(font "Arial" (color 0 0 0)))
+		(text "ready" (rect 212 83 454 176)(font "Arial" (color 0 0 0)))
+		(text "data" (rect 219 99 462 208)(font "Arial" (color 0 0 0)))
+		(text "pattern_out_clk" (rect 54 203 198 419)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "clk" (rect 149 227 316 464)(font "Arial" (color 0 0 0)))
+		(text "reset" (rect 115 243 260 499)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "reset" (rect 149 267 328 544)(font "Arial" (color 0 0 0)))
+		(text " unnamed " (rect 343 288 740 586)(font "Arial" ))
+		(line (pt 144 32)(pt 240 32)(line_width 1))
+		(line (pt 240 32)(pt 240 288)(line_width 1))
+		(line (pt 144 288)(pt 240 288)(line_width 1))
+		(line (pt 144 32)(pt 144 288)(line_width 1))
+		(line (pt 145 52)(pt 145 76)(line_width 1))
+		(line (pt 146 52)(pt 146 76)(line_width 1))
+		(line (pt 145 92)(pt 145 196)(line_width 1))
+		(line (pt 146 92)(pt 146 196)(line_width 1))
+		(line (pt 239 52)(pt 239 108)(line_width 1))
+		(line (pt 238 52)(pt 238 108)(line_width 1))
+		(line (pt 145 212)(pt 145 236)(line_width 1))
+		(line (pt 146 212)(pt 146 236)(line_width 1))
+		(line (pt 145 252)(pt 145 276)(line_width 1))
+		(line (pt 146 252)(pt 146 276)(line_width 1))
+		(line (pt 0 0)(pt 384 0)(line_width 1))
+		(line (pt 384 0)(pt 384 304)(line_width 1))
+		(line (pt 0 304)(pt 384 304)(line_width 1))
+		(line (pt 0 0)(pt 0 304)(line_width 1))
+	)
+)

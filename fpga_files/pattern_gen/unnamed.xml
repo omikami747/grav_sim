@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy
+ date="2023.09.23.15:17:39"
+ outputDirectory="/home/kali/projects/grav_grp_proj/fpga_files/pattern_gen/">
+ <perimeter>
+  <parameter
+     name="AUTO_GENERATION_ID"
+     type="Integer"
+     defaultValue="0"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_UNIQUE_ID"
+     type="String"
+     defaultValue=""
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_FAMILY"
+     type="String"
+     defaultValue="MAX 10"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE"
+     type="String"
+     defaultValue="10M50DAF484C7G"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_SPEEDGRADE"
+     type="String"
+     defaultValue="7"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CSR_CLK_CLOCK_RATE"
+     type="Long"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CSR_CLK_CLOCK_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CSR_CLK_RESET_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_PATTERN_OUT_CLK_CLOCK_RATE"
+     type="Long"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_PATTERN_OUT_CLK_CLOCK_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_PATTERN_OUT_CLK_RESET_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <interface name="csr_clk" kind="clock" start="0">
+   <property name="clockRate" value="0" />
+   <property name="externallyDriven" value="false" />
+   <property name="ptfSchematicName" value="" />
+   <port name="csr_clk_clk" direction="input" role="clk" width="1" />
+  </interface>
+  <interface name="csr_slave" kind="avalon" start="0">
+   <property name="addressAlignment" value="DYNAMIC" />
+   <property name="addressGroup" value="0" />
+   <property name="addressSpan" value="32" />
+   <property name="addressUnits" value="WORDS" />
+   <property name="alwaysBurstMaxBurst" value="false" />
+   <property name="associatedClock" value="csr_clk" />
+   <property name="associatedReset" value="reset" />
+   <property name="bitsPerSymbol" value="8" />
+   <property name="bridgedAddressOffset" value="0" />
+   <property name="bridgesToMaster" value="" />
+   <property name="burstOnBurstBoundariesOnly" value="false" />
+   <property name="burstcountUnits" value="WORDS" />
+   <property name="constantBurstBehavior" value="false" />
+   <property name="explicitAddressSpan" value="0" />
+   <property name="holdTime" value="0" />
+   <property name="interleaveBursts" value="false" />
+   <property name="isBigEndian" value="false" />
+   <property name="isFlash" value="false" />
+   <property name="isMemoryDevice" value="false" />
+   <property name="isNonVolatileStorage" value="false" />
+   <property name="linewrapBursts" value="false" />
+   <property name="maximumPendingReadTransactions" value="0" />
+   <property name="maximumPendingWriteTransactions" value="0" />
+   <property name="minimumUninterruptedRunLength" value="1" />
+   <property name="printableDevice" value="false" />
+   <property name="readLatency" value="1" />
+   <property name="readWaitStates" value="0" />
+   <property name="readWaitTime" value="0" />
+   <property name="registerIncomingSignals" value="false" />
+   <property name="registerOutgoingSignals" value="false" />
+   <property name="setupTime" value="0" />
+   <property name="timingUnits" value="Cycles" />
+   <property name="transparentBridge" value="false" />
+   <property name="wellBehavedWaitrequest" value="false" />
+   <property name="writeLatency" value="0" />
+   <property name="writeWaitStates" value="0" />
+   <property name="writeWaitTime" value="0" />
+   <port name="csr_slave_address" direction="input" role="address" width="3" />
+   <port name="csr_slave_write" direction="input" role="write" width="1" />
+   <port name="csr_slave_read" direction="input" role="read" width="1" />
+   <port
+       name="csr_slave_byteenable"
+       direction="input"
+       role="byteenable"
+       width="4" />
+   <port
+       name="csr_slave_writedata"
+       direction="input"
+       role="writedata"
+       width="32" />
+   <port
+       name="csr_slave_readdata"
+       direction="output"
+       role="readdata"
+       width="32" />
+  </interface>
+  <interface name="pattern_out" kind="avalon_streaming" start="1">
+   <property name="associatedClock" value="pattern_out_clk" />
+   <property name="associatedReset" value="reset" />
+   <property name="beatsPerCycle" value="1" />
+   <property name="dataBitsPerSymbol" value="10" />
+   <property name="emptyWithinPacket" value="false" />
+   <property name="errorDescriptor" value="" />
+   <property name="firstSymbolInHighOrderBits" value="true" />
+   <property name="highOrderSymbolAtMSB" value="false" />
+   <property name="maxChannel" value="0" />
+   <property name="packetDescription" value="" />
+   <property name="readyLatency" value="0" />
+   <property name="symbolsPerBeat" value="4" />
+   <port name="aso_valid" direction="output" role="valid" width="1" />
+   <port name="aso_ready" direction="input" role="ready" width="1" />
+   <port name="aso_data" direction="output" role="data" width="40" />
+  </interface>
+  <interface name="pattern_out_clk" kind="clock" start="0">
+   <property name="clockRate" value="0" />
+   <property name="externallyDriven" value="false" />
+   <property name="ptfSchematicName" value="" />
+   <port name="pattern_out_clk_clk" direction="input" role="clk" width="1" />
+  </interface>
+  <interface name="reset" kind="reset" start="0">
+   <property name="associatedClock" value="csr_clk" />
+   <property name="synchronousEdges" value="DEASSERT" />
+   <port name="reset_reset" direction="input" role="reset" width="1" />
+  </interface>
+ </perimeter>
+ <entity
+   path=""
+   parameterizationKey="unnamed:1.0:AUTO_CSR_CLK_CLOCK_DOMAIN=-1,AUTO_CSR_CLK_CLOCK_RATE=-1,AUTO_CSR_CLK_RESET_DOMAIN=-1,AUTO_DEVICE=10M50DAF484C7G,AUTO_DEVICE_FAMILY=MAX 10,AUTO_DEVICE_SPEEDGRADE=7,AUTO_GENERATION_ID=1695462458,AUTO_PATTERN_OUT_CLK_CLOCK_DOMAIN=-1,AUTO_PATTERN_OUT_CLK_CLOCK_RATE=-1,AUTO_PATTERN_OUT_CLK_RESET_DOMAIN=-1,AUTO_UNIQUE_ID=(altera_avalon_data_pattern_generator:22.1:AUTO_CSR_CLK_CLOCK_DOMAIN=1,AUTO_CSR_CLK_CLOCK_RATE=0,AUTO_CSR_CLK_RESET_DOMAIN=1,AUTO_DEVICE=10M50DAF484C7G,AUTO_DEVICE_FAMILY=MAX 10,AUTO_DEVICE_SPEEDGRADE=7,AVALON_ENABLED=true,BYPASS_ENABLED=false,CROSS_CLK_SYNC_DEPTH=2,FREQ_CNTER_ENABLED=false,ST_DATA_W=40(altera_avalon_data_pattern_generator_core:22.1:AUTO_CSR_CLK_CLOCK_RATE=0,AVALON_ENABLED=true,BYPASS_ENABLED=false,FREQ_CNTER_ENABLED=false,ST_DATA_W=40))"
+   instancePathKey="unnamed"
+   kind="unnamed"
+   version="1.0"
+   name="unnamed">
+  <parameter name="AUTO_PATTERN_OUT_CLK_CLOCK_RATE" value="-1" />
+  <parameter name="AUTO_GENERATION_ID" value="1695462458" />
+  <parameter name="AUTO_DEVICE" value="10M50DAF484C7G" />
+  <parameter name="AUTO_PATTERN_OUT_CLK_CLOCK_DOMAIN" value="-1" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="MAX 10" />
+  <parameter name="AUTO_PATTERN_OUT_CLK_RESET_DOMAIN" value="-1" />
+  <parameter name="AUTO_CSR_CLK_CLOCK_RATE" value="-1" />
+  <parameter name="AUTO_UNIQUE_ID" value="" />
+  <parameter name="AUTO_CSR_CLK_RESET_DOMAIN" value="-1" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_CSR_CLK_CLOCK_DOMAIN" value="-1" />
+  <generatedFiles>
+   <file
+       path="/home/kali/projects/grav_grp_proj/fpga_files/pattern_gen/synthesis/unnamed.v"
+       type="VERILOG" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/home/kali/projects/grav_grp_proj/fpga_files/pattern_gen/synthesis/submodules/unnamed_data_pattern_generator_0.v"
+       type="VERILOG" />
+   <file
+       path="/home/kali/projects/grav_grp_proj/fpga_files/pattern_gen/synthesis/submodules/altera_avalon_data_pattern_generator.v"
+       type="VERILOG" />
+   <file
+       path="/home/kali/projects/grav_grp_proj/fpga_files/pattern_gen/synthesis/submodules/altera_reset_controller.v"
+       type="VERILOG" />
+   <file
+       path="/home/kali/projects/grav_grp_proj/fpga_files/pattern_gen/synthesis/submodules/altera_reset_synchronizer.v"
+       type="VERILOG" />
+   <file
+       path="/home/kali/projects/grav_grp_proj/fpga_files/pattern_gen/synthesis/submodules/altera_avalon_data_pattern_generator.sdc"
+       type="SDC" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file path="/home/kali/FPGAprojects/sdramtst/unnamed.qsys" />
+  </sourceFiles>
+  <childSourceFiles>
+   <file
+       path="/home/kali/intelFPGA_lite/22.1std/ip/altera/gx_debug/altera_avalon_data_pattern_generator/altera_avalon_data_pattern_generator_hw.tcl" />
+   <file
+       path="/home/kali/intelFPGA_lite/22.1std/ip/altera/gx_debug/altera_avalon_data_pattern_generator/altera_avalon_data_pattern_generator_core_hw.tcl" />
+   <file
+       path="/home/kali/intelFPGA_lite/22.1std/ip/altera/gx_debug/altera_avalon_data_pattern_generator/altera_avalon_data_pattern_generator.v" />
+   <file
+       path="/home/kali/intelFPGA_lite/22.1std/ip/altera/merlin/altera_reset_controller/altera_reset_controller.v" />
+   <file
+       path="/home/kali/intelFPGA_lite/22.1std/ip/altera/merlin/altera_reset_controller/altera_reset_synchronizer.v" />
+   <file
+       path="/home/kali/intelFPGA_lite/22.1std/ip/altera/gx_debug/altera_avalon_data_pattern_generator/altera_avalon_data_pattern_generator.sdc" />
+  </childSourceFiles>
+  <messages>
+   <message level="Debug" culprit="unnamed">queue size: 0 starting:unnamed "unnamed"</message>
+   <message level="Progress" culprit="min"></message>
+   <message level="Progress" culprit="max"></message>
+   <message level="Progress" culprit="current"></message>
+   <message level="Debug">Transform: CustomInstructionTransform</message>
+   <message level="Debug">No custom instruction connections, skipping transform </message>
+   <message level="Debug" culprit="merlin_custom_instruction_transform"><![CDATA[After transform: <b>1</b> modules, <b>0</b> connections]]></message>
+   <message level="Debug">Transform: MMTransform</message>
+   <message level="Debug">Transform: InterruptMapperTransform</message>
+   <message level="Debug">Transform: InterruptSyncTransform</message>
+   <message level="Debug">Transform: InterruptFanoutTransform</message>
+   <message level="Debug">Transform: AvalonStreamingTransform</message>
+   <message level="Debug">Transform: ResetAdaptation</message>
+   <message level="Debug" culprit="unnamed"><![CDATA["<b>unnamed</b>" reuses <b>altera_avalon_data_pattern_generator</b> "<b>submodules/unnamed_data_pattern_generator_0</b>"]]></message>
+   <message level="Debug" culprit="unnamed">queue size: 0 starting:altera_avalon_data_pattern_generator "submodules/unnamed_data_pattern_generator_0"</message>
+   <message level="Progress" culprit="min"></message>
+   <message level="Progress" culprit="max"></message>
+   <message level="Progress" culprit="current"></message>
+   <message level="Debug">Transform: CustomInstructionTransform</message>
+   <message level="Debug">No custom instruction connections, skipping transform </message>
+   <message level="Debug" culprit="merlin_custom_instruction_transform"><![CDATA[After transform: <b>1</b> modules, <b>0</b> connections]]></message>
+   <message level="Debug">Transform: MMTransform</message>
+   <message level="Debug">Transform: InterruptMapperTransform</message>
+   <message level="Debug">Transform: InterruptSyncTransform</message>
+   <message level="Debug">Transform: InterruptFanoutTransform</message>
+   <message level="Debug">Transform: AvalonStreamingTransform</message>
+   <message level="Debug">Transform: ResetAdaptation</message>
+   <message level="Debug" culprit="data_pattern_generator_0"><![CDATA["<b>data_pattern_generator_0</b>" reuses <b>altera_avalon_data_pattern_generator_core</b> "<b>submodules/altera_avalon_data_pattern_generator</b>"]]></message>
+   <message level="Info" culprit="data_pattern_generator_0"><![CDATA["<b>unnamed</b>" instantiated <b>altera_avalon_data_pattern_generator</b> "<b>data_pattern_generator_0</b>"]]></message>
+   <message level="Debug" culprit="unnamed">queue size: 0 starting:altera_avalon_data_pattern_generator_core "submodules/altera_avalon_data_pattern_generator"</message>
+   <message level="Debug">set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files</message>
+   <message level="Debug">Command: /home/kali/intelFPGA_lite/22.1std/quartus/linux64/quartus_map not_a_project --generate_hdl_interface=/home/kali/intelFPGA_lite/22.1std/ip/altera/gx_debug/altera_avalon_data_pattern_generator/altera_avalon_data_pattern_generator.v --source=/home/kali/intelFPGA_lite/22.1std/ip/altera/merlin/altera_reset_controller/altera_reset_controller.v --source=/home/kali/intelFPGA_lite/22.1std/ip/altera/merlin/altera_reset_controller/altera_reset_synchronizer.v --source=/home/kali/intelFPGA_lite/22.1std/ip/altera/gx_debug/altera_avalon_data_pattern_generator/altera_avalon_data_pattern_generator.v --set=HDL_INTERFACE_OUTPUT_PATH=/tmp/alt9623_5843384980882614371.dir/0002_sopcqmap/ --ini=disable_check_quartus_compatibility_qsys_only=on</message>
+   <message level="Debug">Command took 5.104s</message>
+   <message level="Info" culprit="data_pattern_generator"><![CDATA["<b>data_pattern_generator_0</b>" instantiated <b>altera_avalon_data_pattern_generator_core</b> "<b>data_pattern_generator</b>"]]></message>
+  </messages>
+ </entity>
+ <entity
+   path="submodules/"
+   parameterizationKey="altera_avalon_data_pattern_generator:22.1:AUTO_CSR_CLK_CLOCK_DOMAIN=1,AUTO_CSR_CLK_CLOCK_RATE=0,AUTO_CSR_CLK_RESET_DOMAIN=1,AUTO_DEVICE=10M50DAF484C7G,AUTO_DEVICE_FAMILY=MAX 10,AUTO_DEVICE_SPEEDGRADE=7,AVALON_ENABLED=true,BYPASS_ENABLED=false,CROSS_CLK_SYNC_DEPTH=2,FREQ_CNTER_ENABLED=false,ST_DATA_W=40(altera_avalon_data_pattern_generator_core:22.1:AUTO_CSR_CLK_CLOCK_RATE=0,AVALON_ENABLED=true,BYPASS_ENABLED=false,FREQ_CNTER_ENABLED=false,ST_DATA_W=40)"
+   instancePathKey="unnamed:.:data_pattern_generator_0"
+   kind="altera_avalon_data_pattern_generator"
+   version="22.1"
+   name="unnamed_data_pattern_generator_0">
+  <parameter name="BYPASS_ENABLED" value="false" />
+  <parameter name="CROSS_CLK_SYNC_DEPTH" value="2" />
+  <parameter name="AVALON_ENABLED" value="true" />
+  <parameter name="AUTO_DEVICE" value="10M50DAF484C7G" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="MAX 10" />
+  <parameter name="ST_DATA_W" value="40" />
+  <parameter name="AUTO_CSR_CLK_CLOCK_RATE" value="0" />
+  <parameter name="AUTO_CSR_CLK_RESET_DOMAIN" value="1" />
+  <parameter name="FREQ_CNTER_ENABLED" value="false" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_CSR_CLK_CLOCK_DOMAIN" value="1" />
+  <generatedFiles>
+   <file
+       path="/home/kali/projects/grav_grp_proj/fpga_files/pattern_gen/synthesis/submodules/unnamed_data_pattern_generator_0.v"
+       type="VERILOG" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/home/kali/projects/grav_grp_proj/fpga_files/pattern_gen/synthesis/submodules/altera_avalon_data_pattern_generator.v"
+       type="VERILOG" />
+   <file
+       path="/home/kali/projects/grav_grp_proj/fpga_files/pattern_gen/synthesis/submodules/altera_reset_controller.v"
+       type="VERILOG" />
+   <file
+       path="/home/kali/projects/grav_grp_proj/fpga_files/pattern_gen/synthesis/submodules/altera_reset_synchronizer.v"
+       type="VERILOG" />
+   <file
+       path="/home/kali/projects/grav_grp_proj/fpga_files/pattern_gen/synthesis/submodules/altera_avalon_data_pattern_generator.sdc"
+       type="SDC" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/home/kali/intelFPGA_lite/22.1std/ip/altera/gx_debug/altera_avalon_data_pattern_generator/altera_avalon_data_pattern_generator_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles>
+   <file
+       path="/home/kali/intelFPGA_lite/22.1std/ip/altera/gx_debug/altera_avalon_data_pattern_generator/altera_avalon_data_pattern_generator_core_hw.tcl" />
+   <file
+       path="/home/kali/intelFPGA_lite/22.1std/ip/altera/gx_debug/altera_avalon_data_pattern_generator/altera_avalon_data_pattern_generator.v" />
+   <file
+       path="/home/kali/intelFPGA_lite/22.1std/ip/altera/merlin/altera_reset_controller/altera_reset_controller.v" />
+   <file
+       path="/home/kali/intelFPGA_lite/22.1std/ip/altera/merlin/altera_reset_controller/altera_reset_synchronizer.v" />
+   <file
+       path="/home/kali/intelFPGA_lite/22.1std/ip/altera/gx_debug/altera_avalon_data_pattern_generator/altera_avalon_data_pattern_generator.sdc" />
+  </childSourceFiles>
+  <instantiator instantiator="unnamed" as="data_pattern_generator_0" />
+  <messages>
+   <message level="Debug" culprit="unnamed">queue size: 0 starting:altera_avalon_data_pattern_generator "submodules/unnamed_data_pattern_generator_0"</message>
+   <message level="Progress" culprit="min"></message>
+   <message level="Progress" culprit="max"></message>
+   <message level="Progress" culprit="current"></message>
+   <message level="Debug">Transform: CustomInstructionTransform</message>
+   <message level="Debug">No custom instruction connections, skipping transform </message>
+   <message level="Debug" culprit="merlin_custom_instruction_transform"><![CDATA[After transform: <b>1</b> modules, <b>0</b> connections]]></message>
+   <message level="Debug">Transform: MMTransform</message>
+   <message level="Debug">Transform: InterruptMapperTransform</message>
+   <message level="Debug">Transform: InterruptSyncTransform</message>
+   <message level="Debug">Transform: InterruptFanoutTransform</message>
+   <message level="Debug">Transform: AvalonStreamingTransform</message>
+   <message level="Debug">Transform: ResetAdaptation</message>
+   <message level="Debug" culprit="data_pattern_generator_0"><![CDATA["<b>data_pattern_generator_0</b>" reuses <b>altera_avalon_data_pattern_generator_core</b> "<b>submodules/altera_avalon_data_pattern_generator</b>"]]></message>
+   <message level="Info" culprit="data_pattern_generator_0"><![CDATA["<b>unnamed</b>" instantiated <b>altera_avalon_data_pattern_generator</b> "<b>data_pattern_generator_0</b>"]]></message>
+   <message level="Debug" culprit="unnamed">queue size: 0 starting:altera_avalon_data_pattern_generator_core "submodules/altera_avalon_data_pattern_generator"</message>
+   <message level="Debug">set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files</message>
+   <message level="Debug">Command: /home/kali/intelFPGA_lite/22.1std/quartus/linux64/quartus_map not_a_project --generate_hdl_interface=/home/kali/intelFPGA_lite/22.1std/ip/altera/gx_debug/altera_avalon_data_pattern_generator/altera_avalon_data_pattern_generator.v --source=/home/kali/intelFPGA_lite/22.1std/ip/altera/merlin/altera_reset_controller/altera_reset_controller.v --source=/home/kali/intelFPGA_lite/22.1std/ip/altera/merlin/altera_reset_controller/altera_reset_synchronizer.v --source=/home/kali/intelFPGA_lite/22.1std/ip/altera/gx_debug/altera_avalon_data_pattern_generator/altera_avalon_data_pattern_generator.v --set=HDL_INTERFACE_OUTPUT_PATH=/tmp/alt9623_5843384980882614371.dir/0002_sopcqmap/ --ini=disable_check_quartus_compatibility_qsys_only=on</message>
+   <message level="Debug">Command took 5.104s</message>
+   <message level="Info" culprit="data_pattern_generator"><![CDATA["<b>data_pattern_generator_0</b>" instantiated <b>altera_avalon_data_pattern_generator_core</b> "<b>data_pattern_generator</b>"]]></message>
+  </messages>
+ </entity>
+ <entity
+   path="submodules/"
+   parameterizationKey="altera_avalon_data_pattern_generator_core:22.1:AUTO_CSR_CLK_CLOCK_RATE=0,AVALON_ENABLED=true,BYPASS_ENABLED=false,FREQ_CNTER_ENABLED=false,ST_DATA_W=40"
+   instancePathKey="unnamed:.:data_pattern_generator_0:.:data_pattern_generator"
+   kind="altera_avalon_data_pattern_generator_core"
+   version="22.1"
+   name="altera_avalon_data_pattern_generator">
+  <parameter name="BYPASS_ENABLED" value="false" />
+  <parameter name="AVALON_ENABLED" value="true" />
+  <parameter name="ST_DATA_W" value="40" />
+  <parameter name="AUTO_CSR_CLK_CLOCK_RATE" value="0" />
+  <parameter name="FREQ_CNTER_ENABLED" value="false" />
+  <generatedFiles>
+   <file
+       path="/home/kali/projects/grav_grp_proj/fpga_files/pattern_gen/synthesis/submodules/altera_avalon_data_pattern_generator.v"
+       type="VERILOG" />
+   <file
+       path="/home/kali/projects/grav_grp_proj/fpga_files/pattern_gen/synthesis/submodules/altera_reset_controller.v"
+       type="VERILOG" />
+   <file
+       path="/home/kali/projects/grav_grp_proj/fpga_files/pattern_gen/synthesis/submodules/altera_reset_synchronizer.v"
+       type="VERILOG" />
+   <file
+       path="/home/kali/projects/grav_grp_proj/fpga_files/pattern_gen/synthesis/submodules/altera_avalon_data_pattern_generator.sdc"
+       type="SDC" />
+  </generatedFiles>
+  <childGeneratedFiles/>
+  <sourceFiles>
+   <file
+       path="/home/kali/intelFPGA_lite/22.1std/ip/altera/gx_debug/altera_avalon_data_pattern_generator/altera_avalon_data_pattern_generator_core_hw.tcl" />
+   <file
+       path="/home/kali/intelFPGA_lite/22.1std/ip/altera/gx_debug/altera_avalon_data_pattern_generator/altera_avalon_data_pattern_generator.v" />
+   <file
+       path="/home/kali/intelFPGA_lite/22.1std/ip/altera/merlin/altera_reset_controller/altera_reset_controller.v" />
+   <file
+       path="/home/kali/intelFPGA_lite/22.1std/ip/altera/merlin/altera_reset_controller/altera_reset_synchronizer.v" />
+   <file
+       path="/home/kali/intelFPGA_lite/22.1std/ip/altera/gx_debug/altera_avalon_data_pattern_generator/altera_avalon_data_pattern_generator.sdc" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="unnamed_data_pattern_generator_0"
+     as="data_pattern_generator" />
+  <messages>
+   <message level="Debug" culprit="unnamed">queue size: 0 starting:altera_avalon_data_pattern_generator_core "submodules/altera_avalon_data_pattern_generator"</message>
+   <message level="Debug">set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files</message>
+   <message level="Debug">Command: /home/kali/intelFPGA_lite/22.1std/quartus/linux64/quartus_map not_a_project --generate_hdl_interface=/home/kali/intelFPGA_lite/22.1std/ip/altera/gx_debug/altera_avalon_data_pattern_generator/altera_avalon_data_pattern_generator.v --source=/home/kali/intelFPGA_lite/22.1std/ip/altera/merlin/altera_reset_controller/altera_reset_controller.v --source=/home/kali/intelFPGA_lite/22.1std/ip/altera/merlin/altera_reset_controller/altera_reset_synchronizer.v --source=/home/kali/intelFPGA_lite/22.1std/ip/altera/gx_debug/altera_avalon_data_pattern_generator/altera_avalon_data_pattern_generator.v --set=HDL_INTERFACE_OUTPUT_PATH=/tmp/alt9623_5843384980882614371.dir/0002_sopcqmap/ --ini=disable_check_quartus_compatibility_qsys_only=on</message>
+   <message level="Debug">Command took 5.104s</message>
+   <message level="Info" culprit="data_pattern_generator"><![CDATA["<b>data_pattern_generator_0</b>" instantiated <b>altera_avalon_data_pattern_generator_core</b> "<b>data_pattern_generator</b>"]]></message>
+  </messages>
+ </entity>
+</deploy>

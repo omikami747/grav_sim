@@ -1,0 +1,22 @@
+# system info unnamed on 2023.09.23.15:17:23
+system_info:
+name,value
+DEVICE,10M50DAF484C7G
+DEVICE_FAMILY,MAX 10
+GENERATION_ID,1695462434
+#
+#
+# Files generated for unnamed on 2023.09.23.15:17:23
+files:
+filepath,kind,attributes,module,is_top
+simulation/unnamed.v,VERILOG,,unnamed,true
+simulation/submodules/unnamed_data_pattern_generator_0.v,VERILOG,,unnamed_data_pattern_generator_0,false
+simulation/submodules/altera_avalon_data_pattern_generator.v,VERILOG,,altera_avalon_data_pattern_generator,false
+simulation/submodules/altera_reset_controller.v,VERILOG,,altera_avalon_data_pattern_generator,false
+simulation/submodules/altera_reset_synchronizer.v,VERILOG,,altera_avalon_data_pattern_generator,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+unnamed.data_pattern_generator_0,unnamed_data_pattern_generator_0
+unnamed.data_pattern_generator_0.data_pattern_generator,altera_avalon_data_pattern_generator

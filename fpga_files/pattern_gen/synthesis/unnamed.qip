@@ -1,0 +1,71 @@
+set_global_assignment -entity "unnamed" -library "unnamed" -name IP_TOOL_NAME "Qsys"
+set_global_assignment -entity "unnamed" -library "unnamed" -name IP_TOOL_VERSION "22.1"
+set_global_assignment -entity "unnamed" -library "unnamed" -name IP_TOOL_ENV "Qsys"
+set_global_assignment -library "unnamed" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../../../../FPGAprojects/sdramtst/unnamed.sopcinfo"]
+set_global_assignment -entity "unnamed" -library "unnamed" -name SLD_INFO "QSYS_NAME unnamed HAS_SOPCINFO 1 GENERATION_ID 1695462458"
+set_global_assignment -library "unnamed" -name MISC_FILE [file join $::quartus(qip_path) "../unnamed.cmp"]
+set_global_assignment -library "unnamed" -name SLD_FILE [file join $::quartus(qip_path) "unnamed.debuginfo"]
+set_global_assignment -entity "unnamed" -library "unnamed" -name IP_TARGETED_DEVICE_FAMILY "MAX 10"
+set_global_assignment -entity "unnamed" -library "unnamed" -name IP_GENERATED_DEVICE_FAMILY "{MAX 10}"
+set_global_assignment -entity "unnamed" -library "unnamed" -name IP_QSYS_MODE "STANDALONE"
+set_global_assignment -name SYNTHESIS_ONLY_QIP ON
+set_global_assignment -library "unnamed" -name MISC_FILE [file join $::quartus(qip_path) "../../../../../FPGAprojects/sdramtst/unnamed.qsys"]
+set_global_assignment -entity "unnamed" -library "unnamed" -name IP_COMPONENT_NAME "dW5uYW1lZA=="
+set_global_assignment -entity "unnamed" -library "unnamed" -name IP_COMPONENT_DISPLAY_NAME "dW5uYW1lZA=="
+set_global_assignment -entity "unnamed" -library "unnamed" -name IP_COMPONENT_REPORT_HIERARCHY "On"
+set_global_assignment -entity "unnamed" -library "unnamed" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "unnamed" -library "unnamed" -name IP_COMPONENT_VERSION "MS4w"
+set_global_assignment -entity "unnamed" -library "unnamed" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTY5NTQ2MjQ1OA==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "unnamed" -library "unnamed" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::TUFYIDEw::QXV0byBERVZJQ0VfRkFNSUxZ"
+set_global_assignment -entity "unnamed" -library "unnamed" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::MTBNNTBEQUY0ODRDN0c=::QXV0byBERVZJQ0U="
+set_global_assignment -entity "unnamed" -library "unnamed" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::Nw==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="
+set_global_assignment -entity "unnamed" -library "unnamed" -name IP_COMPONENT_PARAMETER "QVVUT19DU1JfQ0xLX0NMT0NLX1JBVEU=::LTE=::QXV0byBDTE9DS19SQVRF"
+set_global_assignment -entity "unnamed" -library "unnamed" -name IP_COMPONENT_PARAMETER "QVVUT19DU1JfQ0xLX0NMT0NLX0RPTUFJTg==::LTE=::QXV0byBDTE9DS19ET01BSU4="
+set_global_assignment -entity "unnamed" -library "unnamed" -name IP_COMPONENT_PARAMETER "QVVUT19DU1JfQ0xLX1JFU0VUX0RPTUFJTg==::LTE=::QXV0byBSRVNFVF9ET01BSU4="
+set_global_assignment -entity "unnamed" -library "unnamed" -name IP_COMPONENT_PARAMETER "QVVUT19QQVRURVJOX09VVF9DTEtfQ0xPQ0tfUkFURQ==::LTE=::QXV0byBDTE9DS19SQVRF"
+set_global_assignment -entity "unnamed" -library "unnamed" -name IP_COMPONENT_PARAMETER "QVVUT19QQVRURVJOX09VVF9DTEtfQ0xPQ0tfRE9NQUlO::LTE=::QXV0byBDTE9DS19ET01BSU4="
+set_global_assignment -entity "unnamed" -library "unnamed" -name IP_COMPONENT_PARAMETER "QVVUT19QQVRURVJOX09VVF9DTEtfUkVTRVRfRE9NQUlO::LTE=::QXV0byBSRVNFVF9ET01BSU4="
+set_global_assignment -entity "unnamed_data_pattern_generator_0" -library "unnamed" -name IP_COMPONENT_NAME "dW5uYW1lZF9kYXRhX3BhdHRlcm5fZ2VuZXJhdG9yXzA="
+set_global_assignment -entity "unnamed_data_pattern_generator_0" -library "unnamed" -name IP_COMPONENT_DISPLAY_NAME "QWx0ZXJhIEF2YWxvbiBEYXRhIFBhdHRlcm4gR2VuZXJhdG9y"
+set_global_assignment -entity "unnamed_data_pattern_generator_0" -library "unnamed" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "unnamed_data_pattern_generator_0" -library "unnamed" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "unnamed_data_pattern_generator_0" -library "unnamed" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
+set_global_assignment -entity "unnamed_data_pattern_generator_0" -library "unnamed" -name IP_COMPONENT_VERSION "MjIuMQ=="
+set_global_assignment -entity "unnamed_data_pattern_generator_0" -library "unnamed" -name IP_COMPONENT_DESCRIPTION "QW4gcGFyYWxsZWwgZGF0YSBwYXR0ZXJuIGdlbmVyYXRvcg=="
+set_global_assignment -entity "unnamed_data_pattern_generator_0" -library "unnamed" -name IP_COMPONENT_PARAMETER "U1RfREFUQV9X::NDA=::U1RfREFUQV9X"
+set_global_assignment -entity "unnamed_data_pattern_generator_0" -library "unnamed" -name IP_COMPONENT_PARAMETER "QllQQVNTX0VOQUJMRUQ=::ZmFsc2U=::RW5hYmxlIEJ5cGFzcyBJbnRlcmZhY2U="
+set_global_assignment -entity "unnamed_data_pattern_generator_0" -library "unnamed" -name IP_COMPONENT_PARAMETER "QVZBTE9OX0VOQUJMRUQ=::dHJ1ZQ==::RW5hYmxlIEF2YWxvbiBJbnRlcmZhY2U="
+set_global_assignment -entity "unnamed_data_pattern_generator_0" -library "unnamed" -name IP_COMPONENT_PARAMETER "RlJFUV9DTlRFUl9FTkFCTEVE::ZmFsc2U=::RW5hYmxlIEZyZXF1ZW5jeSBDb3VudGVy"
+set_global_assignment -entity "unnamed_data_pattern_generator_0" -library "unnamed" -name IP_COMPONENT_PARAMETER "Q1JPU1NfQ0xLX1NZTkNfREVQVEg=::Mg==::Q1JPU1NfQ0xLX1NZTkNfREVQVEg="
+set_global_assignment -entity "unnamed_data_pattern_generator_0" -library "unnamed" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::TUFYIDEw::QXV0byBERVZJQ0VfRkFNSUxZ"
+set_global_assignment -entity "unnamed_data_pattern_generator_0" -library "unnamed" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::MTBNNTBEQUY0ODRDN0c=::QXV0byBERVZJQ0U="
+set_global_assignment -entity "unnamed_data_pattern_generator_0" -library "unnamed" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::Nw==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="
+set_global_assignment -entity "unnamed_data_pattern_generator_0" -library "unnamed" -name IP_COMPONENT_PARAMETER "QVVUT19DU1JfQ0xLX0NMT0NLX1JBVEU=::MA==::QXV0byBDTE9DS19SQVRF"
+set_global_assignment -entity "unnamed_data_pattern_generator_0" -library "unnamed" -name IP_COMPONENT_PARAMETER "QVVUT19DU1JfQ0xLX0NMT0NLX0RPTUFJTg==::MQ==::QXV0byBDTE9DS19ET01BSU4="
+set_global_assignment -entity "unnamed_data_pattern_generator_0" -library "unnamed" -name IP_COMPONENT_PARAMETER "QVVUT19DU1JfQ0xLX1JFU0VUX0RPTUFJTg==::MQ==::QXV0byBSRVNFVF9ET01BSU4="
+set_global_assignment -entity "altera_avalon_data_pattern_generator" -library "unnamed" -name IP_COMPONENT_NAME "YWx0ZXJhX2F2YWxvbl9kYXRhX3BhdHRlcm5fZ2VuZXJhdG9y"
+set_global_assignment -entity "altera_avalon_data_pattern_generator" -library "unnamed" -name IP_COMPONENT_DISPLAY_NAME "RGF0YSBQYXR0ZXJuIEdlbmVyYXRvciBjb3Jl"
+set_global_assignment -entity "altera_avalon_data_pattern_generator" -library "unnamed" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "altera_avalon_data_pattern_generator" -library "unnamed" -name IP_COMPONENT_INTERNAL "On"
+set_global_assignment -entity "altera_avalon_data_pattern_generator" -library "unnamed" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
+set_global_assignment -entity "altera_avalon_data_pattern_generator" -library "unnamed" -name IP_COMPONENT_VERSION "MjIuMQ=="
+set_global_assignment -entity "altera_avalon_data_pattern_generator" -library "unnamed" -name IP_COMPONENT_DESCRIPTION "QW4gcGFyYWxsZWwgZGF0YSBwYXR0ZXJuIGdlbmVyYXRvciBjb3Jl"
+set_global_assignment -entity "altera_avalon_data_pattern_generator" -library "unnamed" -name IP_COMPONENT_PARAMETER "U1RfREFUQV9X::NDA=::U1RfREFUQV9X"
+set_global_assignment -entity "altera_avalon_data_pattern_generator" -library "unnamed" -name IP_COMPONENT_PARAMETER "QllQQVNTX0VOQUJMRUQ=::ZmFsc2U=::RW5hYmxlIEJ5cGFzcyBJbnRlcmZhY2U="
+set_global_assignment -entity "altera_avalon_data_pattern_generator" -library "unnamed" -name IP_COMPONENT_PARAMETER "QVZBTE9OX0VOQUJMRUQ=::dHJ1ZQ==::RW5hYmxlIEF2YWxvbiBJbnRlcmZhY2U="
+set_global_assignment -entity "altera_avalon_data_pattern_generator" -library "unnamed" -name IP_COMPONENT_PARAMETER "RlJFUV9DTlRFUl9FTkFCTEVE::ZmFsc2U=::RW5hYmxlIEZyZXF1ZW5jeSBDb3VudGVy"
+set_global_assignment -entity "altera_avalon_data_pattern_generator" -library "unnamed" -name IP_COMPONENT_PARAMETER "QVVUT19DU1JfQ0xLX0NMT0NLX1JBVEU=::MA==::QXV0byBDTE9DS19SQVRF"
+
+set_global_assignment -library "unnamed" -name VERILOG_FILE [file join $::quartus(qip_path) "unnamed.v"]
+set_global_assignment -library "unnamed" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/unnamed_data_pattern_generator_0.v"]
+set_global_assignment -library "unnamed" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_avalon_data_pattern_generator.v"]
+set_global_assignment -library "unnamed" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_reset_controller.v"]
+set_global_assignment -library "unnamed" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_reset_synchronizer.v"]
+set_global_assignment -library "unnamed" -name SDC_FILE [file join $::quartus(qip_path) "submodules/altera_avalon_data_pattern_generator.sdc"]
+
+set_global_assignment -entity "unnamed_data_pattern_generator_0" -library "unnamed" -name IP_TOOL_NAME "altera_avalon_data_pattern_generator"
+set_global_assignment -entity "unnamed_data_pattern_generator_0" -library "unnamed" -name IP_TOOL_VERSION "22.1"
+set_global_assignment -entity "unnamed_data_pattern_generator_0" -library "unnamed" -name IP_TOOL_ENV "Qsys"
+set_global_assignment -entity "altera_avalon_data_pattern_generator" -library "unnamed" -name IP_TOOL_NAME "altera_avalon_data_pattern_generator_core"
+set_global_assignment -entity "altera_avalon_data_pattern_generator" -library "unnamed" -name IP_TOOL_VERSION "22.1"
+set_global_assignment -entity "altera_avalon_data_pattern_generator" -library "unnamed" -name IP_TOOL_ENV "Qsys"

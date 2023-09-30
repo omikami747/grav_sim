@@ -1,0 +1,17 @@
+	component unnamed is
+		port (
+			csr_clk_clk          : in  std_logic                     := 'X';             -- clk
+			csr_slave_address    : in  std_logic_vector(2 downto 0)  := (others => 'X'); -- address
+			csr_slave_write      : in  std_logic                     := 'X';             -- write
+			csr_slave_read       : in  std_logic                     := 'X';             -- read
+			csr_slave_byteenable : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- byteenable
+			csr_slave_writedata  : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
+			csr_slave_readdata   : out std_logic_vector(31 downto 0);                    -- readdata
+			aso_valid            : out std_logic;                                        -- valid
+			aso_ready            : in  std_logic                     := 'X';             -- ready
+			aso_data             : out std_logic_vector(39 downto 0);                    -- data
+			pattern_out_clk_clk  : in  std_logic                     := 'X';             -- clk
+			reset_reset          : in  std_logic                     := 'X'              -- reset
+		);
+	end component unnamed;
+

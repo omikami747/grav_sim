@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file
+   path="simulation/submodules/altera_avalon_data_pattern_generator.v"
+   type="VERILOG"
+   library="data_pattern_generator" />
+ <file
+   path="simulation/submodules/altera_reset_controller.v"
+   type="VERILOG"
+   library="data_pattern_generator" />
+ <file
+   path="simulation/submodules/altera_reset_synchronizer.v"
+   type="VERILOG"
+   library="data_pattern_generator" />
+ <file
+   path="simulation/submodules/unnamed_data_pattern_generator_0.v"
+   type="VERILOG"
+   library="data_pattern_generator_0" />
+ <file path="simulation/unnamed.v" type="VERILOG" />
+ <topLevel name="unnamed" />
+ <deviceFamily name="max10" />
+</simPackage>
