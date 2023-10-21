@@ -1,0 +1,12 @@
+#!/usr/bin/env python3
+import random
+fh = open("Fp_Add_tstvec.txt","w")
+for i in range(0,100):
+    for j in range(0,2):
+        s = ""
+        for k in range(0,27):
+            s = s + str(random.randint(0,1))
+        fh.write(s)
+        if (j == 0):
+            fh.write(" ")
+    fh.write("\n")

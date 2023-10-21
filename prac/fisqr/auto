@@ -1,0 +1,26 @@
+#!/usr/bin/env python3
+from subprocess import call
+import os
+# try :
+#     opts,args = getopt.getopt(sys.argv[1:],"c:",["count"])   ## replaced gnu_getopt with getopt because 
+#     # print(opts,args)
+# except getopt.GetoptError as err:
+#     print(err," error hua h")
+#     sys.exit(1)                                          ## error code 1
+
+
+# for o,a in opts:
+
+#     if (o == c):
+        
+call(["gcc","int2fp.c","-o","int2fp.out"])
+call(["./int2fp.out"])
+call(["rm","-f","int2fp.out"])
+cmd = "iverilog fast_inv_sqrt.v fast_inv_sqrt_tb.v FpAdd.v fp_mul_new.v -o fisqr.out"
+
+call(cmd.split())
+call(["./fisqr.out"])
+
+os.system("tail -n +5 module_output.txt > temp.txt")
+os.system("./fp2int")
+##call(cmd1.split())

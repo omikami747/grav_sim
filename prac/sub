@@ -1,0 +1,5 @@
+#!/usr/bin/env python
+a = 22567
+print (bin(a)[2:])
+n_a = "0"*(27-len(bin(a)[2:])) + bin(a)[2:]
+print(n_a)

@@ -1,0 +1,9 @@
+AUTO REFRESH COMMAND
+This command executes the AUTO REFRESH operation.
+The row address and bank to be refreshed are automatically generated during this operation. The stipulated period
+(trc) is required for a single refresh operation, and no
+other commands can be executed during this period. This
+command is executed at least 8192 times for every Tref
+period. During an AUTO REFRESH command, address
+bits are “Don’t Care”. This command corresponds to CBR
+Auto-refresh.

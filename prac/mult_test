@@ -1,0 +1,6 @@
+#!/usr/bin/env python3
+
+import struct
+print(struct.pack("<f", 1.125))
+t = struct.pack("<f", 9.125)
+print(t)

@@ -1,0 +1,112 @@
+#!/usr/bin/env python3
+#print ("works fine !!")
+import numpy as np
+
+##Adder function
+def custom_add(ba,bb):
+    if (int(ba[1:9]) > int(bb[1:9]) or (int(ba[1:9]) == int(bb[1:9])) and (int(ba[9:]) > int(bb[9:]))):
+        g = ba
+        s = bb
+    else:
+        g = bb
+        s = ba
+    
+    a = "1"+g[9:]
+    b = "1"+s[9:]
+    expt_diff = (int(g[1:9],2)-int(s[1:9],2))
+    lol=""
+    if (expt_diff != 0):
+        lol = "0"*(expt_diff) + b[:-expt_diff]
+    else:
+        lol = b
+    #print ("lol is",lol)
+    #return None
+    
+    
+    new_a = int(a,2)
+    new_b = int(lol,2)
+    
+    mantissa = bin(new_a + new_b)
+    ignore_bits = len(mantissa)-21
+    result = ""
+    if (len(mantissa) > 21):
+        new_g = bin (int(g[1:9],2) + 1)
+        result = (g[26] + new_g[2:] + mantissa[3:-1])
+    else:
+        result = (g[26] + g[1:9] + mantissa[3:])
+    print ("add result =",result)
+    return (result)
+
+##Subtraction Function
+def custom_subtract(ba,bb):
+    #return None
+    if (int(ba[1:9]) > int(bb[1:9]) or (int(ba[1:9]) == int(bb[1:9])) and (int(ba[9:]) > int(bb[9:]))):
+        g = ba
+        s = bb
+    else:
+        g = bb
+        s = ba
+    
+    a = "1"+g[9:]
+    b = "1"+s[9:]
+    expt_diff = (int(g[1:9],2)-int(s[1:9],2))
+    #print ("expt_diff is",expt_diff)
+    lol=""
+    if (expt_diff != 0):
+        lol = "0"*(expt_diff) + b[:-expt_diff]
+    else:
+        lol = b
+    new_a = int(a,2)
+    new_b = int(lol,2)
+    #print ("length of shifted val and original",len(lol),lol)
+    int_diff = new_a - new_b
+    print("The difference of",new_a,"and",new_b,"is",int_diff)
+    mantissa = bin(new_a - new_b)[2:]
+    old_expt = int(g[1:9],2)
+    new_expt = old_expt
+    #print ("new_expt =",bin(new_expt)[2:])
+    #print ("new_a",bin(new_a)[2:],"new_b",bin(new_b)[2:])
+    print ("mantissa is =",mantissa,mantissa[20 - len(mantissa):],"0"*(19 - len(mantissa)))
+    mant = (19-len(mantissa))*"0" + mantissa
+    #new_mantissa = mantissa[19 - len(mantissa):] + "0"*(19 - len(mantissa))
+    one_occ = 0
+    for i in range(len(mant)):
+        if (mant[i] == "1"):
+            one_occ = i
+            break
+
+
+        
+    new_mantissa = mant[one_occ+1:]+"0"*(one_occ)
+    print (one_occ*"0")
+    new_expt = new_expt - one_occ
+    print ("predicted result in int is",int(new_mantissa,2),len(mantissa),len(new_mantissa))
+    sub_result = g[0] + bin(new_expt)[2:] + new_mantissa
+    print ("sub result =",sub_result,len(sub_result))
+    #print ("new mantissa",new_mantissa)
+    return sub_result
+
+##Main Function
+def custom_27bit_addr(binary_a,binary_b):
+    a = int(binary_a,2)
+    b = int(binary_b,2)
+    if (binary_a[0] != binary_b[0]):
+        return(custom_subtract(binary_a,binary_b))
+    else:
+        res_mant = custom_add(binary_a,binary_b)
+        return res_mant
+    
+## Reading mechanism
+test_file = "/home/omkar/projects/grav_sim/test/Fp_Add_tstvec.txt"
+output_file = "../run/FpAdd_ref.out"
+oh = open(output_file,'w')
+fh = open(test_file,'r')
+test_vectors = fh.readlines()
+final_test_vectors = [ vectors.replace('\n','') for vectors in test_vectors ]
+for vectors in final_test_vectors:
+    indi = vectors.split()
+    print (indi[0],indi[1])
+    oh.write(custom_27bit_addr(indi[0],indi[1]))
+    oh.write("\n")
+
+#FpAdd_rtl_out

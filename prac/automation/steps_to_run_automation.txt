@@ -1,0 +1,26 @@
+step1 : fill the inputs in decimal.txt files one by one, line after line.
+
+step2 : py dec_bin.py
+
+step3 : binary.txt file will be created after this and paste this file into simulation folder of quartus.
+
+step4 : open the test bench and change the inital value of input_count as shown below
+
+		if number of inputs=3  --->  input_count= 'd5 + 'd2;
+		if number of inputs=10  --->  input_count= 'd5 + 'd9;
+		.
+		.
+		.
+		if number of inputs=N  --->  input_count= 'd5 + 'd(N-1);
+
+	and finally run the simulation
+
+step5 : copy the model_output.txt file from simulation folder and paste it into this automation folder.
+
+step6 : py bin_dec.py
+
+step7 : py comparison.py
+
+open output.xlsx file to see the results
+
+ 

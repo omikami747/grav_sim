@@ -1,0 +1,9 @@
+module interface (
+                  clk,
+                  rst,
+                  request,
+                  is_write,
+                  address,
+                  
+                  );
+endmodule

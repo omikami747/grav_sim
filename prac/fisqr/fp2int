@@ -1,0 +1,18 @@
+#!/usr/bin/env python3
+def pt (a):
+    #i = 1;
+    sum = 1
+    for i in range (1,19):
+        sum = sum + (int(a[i-1]) / (2**(i)))
+        ##print (a[i-1])
+    ##print (sum)
+    return sum
+fh = open("temp.txt","r")
+lines = fh.readlines()
+for templine in lines:
+    line = templine.strip()
+    print(len(line))
+    expt = line[1:9]
+    mant = line[9:]
+    ##print(line,expt,int(expt,2),mant,pt(mant))
+    print((2**(int(expt,2)-127))*(pt(mant)))
