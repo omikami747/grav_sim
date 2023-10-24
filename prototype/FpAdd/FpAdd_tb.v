@@ -73,7 +73,7 @@ module FpAdd_tb;
         //#50;
         tst_rst <= 'b1;
         
-        #2000;
+        #200000;
         $finish;
         
         

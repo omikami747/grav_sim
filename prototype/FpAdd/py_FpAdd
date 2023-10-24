@@ -28,11 +28,14 @@ def custom_add(ba,bb):
     ignore_bits = len(mantissa)-21
     result = ""
     if (len(mantissa) > 21):
-        new_g = bin (int(g[1:9],2) + 1)
-        result = (g[0] + new_g[2:] + mantissa[3:-1])
+        new_g = int(g[1:9],2) + 1
+        new_g = "0"*(8-len(str(bin(new_g)[2:]))) + str(bin(new_g)[2:])
+        ##print(new_g)
+        result = (g[0] + new_g + mantissa[3:-1])
     else:
-        result = (g[0] + g[1:9] + mantissa[3:])
-    ##print ("add result =",result)
+        result = (str(g[0]) + str(g[1:9]) + str(mantissa[3:]))
+    ##print ("add result1 =",g[0],g[1:9],mantissa[3:],result,len(result),len(mantissa))
+    ##print ("add result1 =",g[0],new_g,mantissa[3:-1],result,len(result),len(mantissa))
     return (result)
 
 ##Subtraction Function
