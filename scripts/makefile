@@ -1,4 +1,4 @@
-PRAC=../prac
+PRAC=../prototype/FpAdd
 LINES:=$(shell python3 ${PRAC}/linelength)
 TEST=../test
 
@@ -16,8 +16,8 @@ FpAdd_ref.out: ${PRAC}/py_FpAdd ${TEST}/Fp_Add_tstvec.txt
 	./${PRAC}/py_FpAdd
 
 FpAdd.log: ./FpAdd_rtl.out ./FpAdd_ref.out ../scripts/makefile
-	#diff -s FpAdd_rtl.out FpAdd_ref.out
-	cmp FpAdd_rtl.out FpAdd_ref.out > FpAdd.log
+	#cmp FpAdd_rtl.out FpAdd_ref.out > FpAdd.log
+	diff -s FpAdd_rtl.out FpAdd_ref.out | tee -i FpAdd.log 
 clean:
 	rm -f ./*
 #no_test_vec:
