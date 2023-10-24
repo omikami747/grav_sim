@@ -186,7 +186,7 @@ module FpAdd (
 
    always @(*)
      begin
-        sub_out <= {1'b1,gr[`MANT]} - sm[`MANT];
+        sub_out <= {1'b1,gr[`MANT]} - sm[18:0];
      end
 
    //--------------------------------------------------------------------

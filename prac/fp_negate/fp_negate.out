@@ -1,0 +1,53 @@
+#! /usr/bin/vvp
+:ivl_version "11.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x56303d49b080 .scope module, "fp_negate_tb" "fp_negate_tb" 2 8;
+ .timescale 0 0;
+v0x56303d4ac6c0_0 .var "in", 26 0;
+v0x56303d4ac780_0 .net "neg_out", 26 0, L_0x56303d4acad0;  1 drivers
+S_0x56303d49b210 .scope module, "dut" "fp_negate" 2 13, 3 9 0, S_0x56303d49b080;
+ .timescale 0 0;
+    .port_info 0 /INPUT 27 "in";
+    .port_info 1 /OUTPUT 27 "neg_out";
+L_0x56303d4ac970 .functor NOT 1, L_0x56303d4ac850, C4<0>, C4<0>, C4<0>;
+v0x56303d49b3a0_0 .net *"_ivl_1", 0 0, L_0x56303d4ac850;  1 drivers
+v0x56303d4ac2b0_0 .net *"_ivl_2", 0 0, L_0x56303d4ac970;  1 drivers
+v0x56303d4ac390_0 .net *"_ivl_5", 25 0, L_0x56303d4aca30;  1 drivers
+v0x56303d4ac450_0 .net "in", 26 0, v0x56303d4ac6c0_0;  1 drivers
+v0x56303d4ac530_0 .net "neg_out", 26 0, L_0x56303d4acad0;  alias, 1 drivers
+L_0x56303d4ac850 .part v0x56303d4ac6c0_0, 26, 1;
+L_0x56303d4aca30 .part v0x56303d4ac6c0_0, 0, 26;
+L_0x56303d4acad0 .concat [ 26 1 0 0], L_0x56303d4aca30, L_0x56303d4ac970;
+    .scope S_0x56303d49b080;
+T_0 ;
+    %vpi_call 2 20 "$dumpvars" {0 0 0};
+    %pushi/vec4 67108864, 0, 27;
+    %assign/vec4 v0x56303d4ac6c0_0, 0;
+    %delay 10, 0;
+    %pushi/vec4 25241148, 0, 27;
+    %assign/vec4 v0x56303d4ac6c0_0, 0;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 27;
+    %assign/vec4 v0x56303d4ac6c0_0, 0;
+    %delay 10, 0;
+    %pushi/vec4 79691776, 0, 27;
+    %assign/vec4 v0x56303d4ac6c0_0, 0;
+    %delay 10, 0;
+    %pushi/vec4 114688, 0, 27;
+    %assign/vec4 v0x56303d4ac6c0_0, 0;
+    %delay 100, 0;
+    %vpi_call 2 32 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "fp_negate_tb.v";
+    "fp_negate.v";

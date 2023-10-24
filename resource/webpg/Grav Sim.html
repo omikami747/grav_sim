@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<!-- saved from url=(0122)https://people.ece.cornell.edu/land/courses/ece5760/FinalProjects/s2023/raf269_nkg37_tjw234/raf269_nkg37_tjw234/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Grav Sim</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./Grav Sim_files/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!-- <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
+
+    <!-- Custom styles for this template -->
+    <link href="./Grav Sim_files/starter-template.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!-- <script src="../../assets/js/ie-emulation-modes-warning.js"></script> -->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="vsc-initialized">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="https://people.ece.cornell.edu/land/courses/ece5760/FinalProjects/s2023/raf269_nkg37_tjw234/raf269_nkg37_tjw234/index.html#">Grav Sim</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="https://people.ece.cornell.edu/land/courses/ece5760/FinalProjects/s2023/raf269_nkg37_tjw234/raf269_nkg37_tjw234/index.html#">Home</a></li>
+                    <li><a href="https://people.ece.cornell.edu/land/courses/ece5760/FinalProjects/s2023/raf269_nkg37_tjw234/raf269_nkg37_tjw234/index.html#intro">Introduction</a></li>
+                    <li><a href="https://people.ece.cornell.edu/land/courses/ece5760/FinalProjects/s2023/raf269_nkg37_tjw234/raf269_nkg37_tjw234/index.html#obj">Project Objective</a></li>
+                    <li><a href="https://people.ece.cornell.edu/land/courses/ece5760/FinalProjects/s2023/raf269_nkg37_tjw234/raf269_nkg37_tjw234/index.html#Math">Math</a></li>
+                    <li><a href="https://people.ece.cornell.edu/land/courses/ece5760/FinalProjects/s2023/raf269_nkg37_tjw234/raf269_nkg37_tjw234/index.html#design">Design</a></li>
+                    <li><a href="https://people.ece.cornell.edu/land/courses/ece5760/FinalProjects/s2023/raf269_nkg37_tjw234/raf269_nkg37_tjw234/index.html#testing">Testing</a></li>
+                    <li><a href="https://people.ece.cornell.edu/land/courses/ece5760/FinalProjects/s2023/raf269_nkg37_tjw234/raf269_nkg37_tjw234/index.html#result">Result</a></li>
+                    <li><a href="https://people.ece.cornell.edu/land/courses/ece5760/FinalProjects/s2023/raf269_nkg37_tjw234/raf269_nkg37_tjw234/index.html#conclusion">Concluson</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="starter-template">
+            <h1>Grav Sim</h1>
+            <p class="lead">2D N-Body Gravity Simulator<br>By Raphael Fortuna, Nick George, Tyrone Whitmore-Wilson.
+            </p>
+        </div>
+
+        <hr>
+        <div style="text-align:center;">
+            <iframe width="1280" height="720" src="./Grav Sim_files/I-tN022fdpk.html" frameborder="0" allowfullscreen=""></iframe>
+            <h4 style="text-align:center;">Live Demonstration Video</h4>
+        </div>
+        <div style="text-align:center;">
+            <iframe width="1280" height="720" src="./Grav Sim_files/vNPuH5ApaiQ.html" frameborder="0" allowfullscreen=""></iframe>
+            <h4 style="text-align:center;">Extra Demonstration Video</h4>
+        </div>
+
+        <hr id="intro">
+
+        <div style="text-align:center;">
+            <h2>Introduction</h2>
+            <p style="text-align: left;padding: 0px 30px;">
+                The goal of our project was to create an interesting gravity simulation and accelerate it using the
+                FPGA. Simulating gravity between celestial bodies (stars, planets, asteroids, etc.) using a standard CPU
+                is limited since it can only do sequential calculations, leading to very long simulation times as the
+                number of bodies increases. Our goal was to speed up these calculations by sending each celestial body’s
+                information to the FPGA, have it calculate each interaction between the other celestial bodies in
+                parallel, and then send the result back up to the ARM to be displayed on the monitor.
+            </p>
+        </div>
+
+        <hr id="obj">
+
+        <div class="row">
+            <div class="col-md-12" style="font-size:18px;">
+                <h2>Project Objective:</h2>
+                <ul>
+                    <li>2D N-body gravity simulator with customizable maps and interactive features controlled through a
+                        mouse based GUI.</li>
+                    <li>Accelerate the gravity simulator with a hardware based acceleration calculation accelerator on
+                        the FPGA portion of the DE1-SoC.</li>
+                </ul>
+            </div>
+        </div>
+        <hr id="Math">
+
+        <div style="text-align:center;">
+            <h2>Math</h2>
+            <p style="text-align: left;padding: 0px 30px;">
+                We begin the mathematical basis for our accelerator with the standard newtownian gravity equation.
+            </p>
+            <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mrow>
+                        <mo stretchy="true" form="prefix">|</mo>
+                        <msub>
+                            <mi>F</mi>
+                            <mn>2</mn>
+                        </msub>
+                        <mo stretchy="true" form="postfix">|</mo>
+                    </mrow>
+                    <mo>=</mo>
+                    <mrow>
+                        <mo stretchy="true" form="prefix">|</mo>
+                        <msub>
+                            <mi>F</mi>
+                            <mn>1</mn>
+                        </msub>
+                        <mo stretchy="true" form="postfix">|</mo>
+                    </mrow>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mrow>
+                            <mi>G</mi>
+                            <msub>
+                                <mi>m</mi>
+                                <mn>1</mn>
+                            </msub>
+                            <msub>
+                                <mi>m</mi>
+                                <mn>2</mn>
+                            </msub>
+                        </mrow>
+                        <msup>
+                            <mi>r</mi>
+                            <mn>2</mn>
+                        </msup>
+                    </mfrac>
+                </mrow>
+            </math>
+            <br>
+            <p style="text-align: left;padding: 0px 30px;">
+                Then, since we want to simplify the equation and reduce the amount of math on the HPS we try to solve
+                for acceleration instead.
+            </p>
+
+            <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub>
+                        <mi>a</mi>
+                        <mn>1</mn>
+                    </msub>
+                    <mo>=</mo>
+                    <mfrac>
+                        <msub>
+                            <mi>F</mi>
+                            <mn>1</mn>
+                        </msub>
+                        <msub>
+                            <mi>m</mi>
+                            <mn>1</mn>
+                        </msub>
+                    </mfrac>
+                </mrow>
+            </math>
+            <br>
+
+            <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub>
+                        <mi>a</mi>
+                        <mn>1</mn>
+                    </msub>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mfrac>
+                            <mrow>
+                                <mi>G</mi>
+                                <msub>
+                                    <mi>m</mi>
+                                    <mn>1</mn>
+                                </msub>
+                                <msub>
+                                    <mi>m</mi>
+                                    <mn>2</mn>
+                                </msub>
+                            </mrow>
+                            <msup>
+                                <mi>r</mi>
+                                <mn>2</mn>
+                            </msup>
+                        </mfrac>
+                        <msub>
+                            <mi>m</mi>
+                            <mn>1</mn>
+                        </msub>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mrow>
+                            <mi>G</mi>
+                            <msub>
+                                <mi>m</mi>
+                                <mn>2</mn>
+                            </msub>
+                        </mrow>
+                        <msup>
+                            <mi>r</mi>
+                            <mn>2</mn>
+                        </msup>
+                    </mfrac>
+                </mrow>
+            </math>
+            <br>
+            <p style="text-align: left;padding: 0px 30px;">
+                The same method is used to calculate the other acceleration
+            </p>
+            <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub>
+                        <mi>a</mi>
+                        <mn>2</mn>
+                    </msub>
+                    <mo>=</mo>
+                    <mfrac>
+                        <msub>
+                            <mi>F</mi>
+                            <mn>1</mn>
+                        </msub>
+                        <msub>
+                            <mi>m</mi>
+                            <mn>2</mn>
+                        </msub>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mrow>
+                            <mi>G</mi>
+                            <msub>
+                                <mi>m</mi>
+                                <mn>1</mn>
+                            </msub>
+                        </mrow>
+                        <msup>
+                            <mi>r</mi>
+                            <mn>2</mn>
+                        </msup>
+                    </mfrac>
+                </mrow>
+            </math>
+            <br>
+            <p style="text-align: left;padding: 0px 30px;">
+                Unfortunately for this calcualtion,
+                <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <msub>
+                            <mo>lim</mo>
+                            <mrow>
+                                <mi>r</mi>
+                                <mo>→</mo>
+                                <mn>0</mn>
+                            </mrow>
+                        </msub>
+                        <mi>F</mi>
+                        <mo>=</mo>
+                        <mi>∞</mi>
+                    </mrow>
+                </math>
+                , which means that if our objects get too close together we can create infinite acceleration. This
+                doesn't match reality but since our system doesn't handle object collisions, we need to add a
+                calculation failsafe.
+                Therefore we normalize the radius math with an offset, epsilon, which prevents the size from growing to
+                infinity.
+            </p>
+            <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mfrac>
+                        <mn>1</mn>
+                        <msup>
+                            <mi>r</mi>
+                            <mn>2</mn>
+                        </msup>
+                    </mfrac>
+                    <mo>≈</mo>
+                    <mfrac>
+                        <mi>r</mi>
+                        <msup>
+                            <mrow>
+                                <mo stretchy="true" form="prefix">(</mo>
+                                <msqrt>
+                                    <mrow>
+                                        <msup>
+                                            <mi>r</mi>
+                                            <mn>2</mn>
+                                        </msup>
+                                        <mo>+</mo>
+                                        <msup>
+                                            <mi>ϵ</mi>
+                                            <mn>2</mn>
+                                        </msup>
+                                    </mrow>
+                                </msqrt>
+                                <mo stretchy="true" form="postfix">)</mo>
+                            </mrow>
+                            <mn>3</mn>
+                        </msup>
+                    </mfrac>
+                </mrow>
+            </math>
+            <br>
+            <p style="text-align: left;padding: 0px 30px;">
+                We chose epsilon to be about <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                    <msup>
+                        <mn>10</mn>
+                        <mrow>
+                            <mo>−</mo>
+                            <mn>8</mn>
+                        </mrow>
+                    </msup>
+                </math>
+                which means that it doesn't significantly outgrow our mantissa's precision which is about 9 decimal
+                places.
+            </p>
+
+            <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub>
+                        <mi>a</mi>
+                        <mn>1</mn>
+                    </msub>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mrow>
+                            <mi>G</mi>
+                            <mi>r</mi>
+                            <msub>
+                                <mi>m</mi>
+                                <mn>2</mn>
+                            </msub>
+                        </mrow>
+                        <msup>
+                            <mrow>
+                                <mo stretchy="true" form="prefix">(</mo>
+                                <msqrt>
+                                    <mrow>
+                                        <msup>
+                                            <mi>r</mi>
+                                            <mn>2</mn>
+                                        </msup>
+                                        <mo>+</mo>
+                                        <msup>
+                                            <mi>ϵ</mi>
+                                            <mn>2</mn>
+                                        </msup>
+                                    </mrow>
+                                </msqrt>
+                                <mo stretchy="true" form="postfix">)</mo>
+                            </mrow>
+                            <mn>3</mn>
+                        </msup>
+                    </mfrac>
+                </mrow>
+            </math>
+            <br>
+            <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub>
+                        <mi>a</mi>
+                        <mn>2</mn>
+                    </msub>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mrow>
+                            <mi>G</mi>
+                            <mi>r</mi>
+                            <msub>
+                                <mi>m</mi>
+                                <mn>1</mn>
+                            </msub>
+                        </mrow>
+                        <msup>
+                            <mrow>
+                                <mo stretchy="true" form="prefix">(</mo>
+                                <msqrt>
+                                    <mrow>
+                                        <msup>
+                                            <mi>r</mi>
+                                            <mn>2</mn>
+                                        </msup>
+                                        <mo>+</mo>
+                                        <msup>
+                                            <mi>ϵ</mi>
+                                            <mn>2</mn>
+                                        </msup>
+                                    </mrow>
+                                </msqrt>
+                                <mo stretchy="true" form="postfix">)</mo>
+                            </mrow>
+                            <mn>3</mn>
+                        </msup>
+                    </mfrac>
+                </mrow>
+            </math>
+            <br>
+            <p style="text-align: left;padding: 0px 30px;">
+                However that only calculates the total acceleration. To store the acceleration as a vector we needed the
+                directional components.
+                To calculate that we used the x and y displaccements divided by the radius.
+            </p>
+            <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mover>
+                        <mi>x</mi>
+                        <mo accent="true">̂</mo>
+                    </mover>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mrow>
+                            <mo stretchy="true" form="prefix">(</mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mn>1</mn>
+                            </msub>
+                            <mo>−</mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mn>2</mn>
+                            </msub>
+                            <mo stretchy="true" form="postfix">)</mo>
+                        </mrow>
+                        <mi>r</mi>
+                    </mfrac>
+                    <mspace width="1.0em"></mspace>
+                    <mover>
+                        <mi>y</mi>
+                        <mo accent="true">̂</mo>
+                    </mover>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mrow>
+                            <mo stretchy="true" form="prefix">(</mo>
+                            <msub>
+                                <mi>y</mi>
+                                <mn>1</mn>
+                            </msub>
+                            <mo>−</mo>
+                            <msub>
+                                <mi>y</mi>
+                                <mn>2</mn>
+                            </msub>
+                            <mo stretchy="true" form="postfix">)</mo>
+                        </mrow>
+                        <mi>r</mi>
+                    </mfrac>
+                </mrow>
+            </math>
+            <br>
+            <p style="text-align: left;padding: 0px 30px;">
+                When applied to our acceleration formula from before we get the following equations that our accelrator
+                needs to calculate
+            </p>
+            <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub>
+                        <mi>a</mi>
+                        <mrow>
+                            <mn>1</mn>
+                            <mi>x</mi>
+                        </mrow>
+                    </msub>
+                    <mo>=</mo>
+                    <mover>
+                        <mi>x</mi>
+                        <mo accent="true">̂</mo>
+                    </mover>
+                    <mfrac>
+                        <mrow>
+                            <mi>G</mi>
+                            <mi>r</mi>
+                            <msub>
+                                <mi>m</mi>
+                                <mn>2</mn>
+                            </msub>
+                        </mrow>
+                        <msup>
+                            <mrow>
+                                <mo stretchy="true" form="prefix">(</mo>
+                                <msqrt>
+                                    <mrow>
+                                        <msup>
+                                            <mi>r</mi>
+                                            <mn>2</mn>
+                                        </msup>
+                                        <mo>+</mo>
+                                        <msup>
+                                            <mi>ϵ</mi>
+                                            <mn>2</mn>
+                                        </msup>
+                                    </mrow>
+                                </msqrt>
+                                <mo stretchy="true" form="postfix">)</mo>
+                            </mrow>
+                            <mn>3</mn>
+                        </msup>
+                    </mfrac>
+                    <mspace width="1.0em"></mspace>
+                    <msub>
+                        <mi>a</mi>
+                        <mrow>
+                            <mn>1</mn>
+                            <mi>y</mi>
+                        </mrow>
+                    </msub>
+                    <mo>=</mo>
+                    <mover>
+                        <mi>y</mi>
+                        <mo accent="true">̂</mo>
+                    </mover>
+                    <mfrac>
+                        <mrow>
+                            <mi>G</mi>
+                            <mi>r</mi>
+                            <msub>
+                                <mi>m</mi>
+                                <mn>2</mn>
+                            </msub>
+                        </mrow>
+                        <msup>
+                            <mrow>
+                                <mo stretchy="true" form="prefix">(</mo>
+                                <msqrt>
+                                    <mrow>
+                                        <msup>
+                                            <mi>r</mi>
+                                            <mn>2</mn>
+                                        </msup>
+                                        <mo>+</mo>
+                                        <msup>
+                                            <mi>ϵ</mi>
+                                            <mn>2</mn>
+                                        </msup>
+                                    </mrow>
+                                </msqrt>
+                                <mo stretchy="true" form="postfix">)</mo>
+                            </mrow>
+                            <mn>3</mn>
+                        </msup>
+                    </mfrac>
+                </mrow>
+            </math>
+            <br>
+            <p style="text-align: left;padding: 0px 30px;">
+                We add a negative sign to the acceleration for object 2 because the displacement is the negative of the
+                displacement we calculate in the original x hat calcualtion.
+            </p>
+            <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub>
+                        <mi>a</mi>
+                        <mrow>
+                            <mn>2</mn>
+                            <mi>x</mi>
+                        </mrow>
+                    </msub>
+                    <mo>=</mo>
+                    <mo>−</mo>
+                    <mover>
+                        <mi>x</mi>
+                        <mo accent="true">̂</mo>
+                    </mover>
+                    <mfrac>
+                        <mrow>
+                            <mi>G</mi>
+                            <mi>r</mi>
+                            <msub>
+                                <mi>m</mi>
+                                <mn>1</mn>
+                            </msub>
+                        </mrow>
+                        <msup>
+                            <mrow>
+                                <mo stretchy="true" form="prefix">(</mo>
+                                <msqrt>
+                                    <mrow>
+                                        <msup>
+                                            <mi>r</mi>
+                                            <mn>2</mn>
+                                        </msup>
+                                        <mo>+</mo>
+                                        <msup>
+                                            <mi>ϵ</mi>
+                                            <mn>2</mn>
+                                        </msup>
+                                    </mrow>
+                                </msqrt>
+                                <mo stretchy="true" form="postfix">)</mo>
+                            </mrow>
+                            <mn>3</mn>
+                        </msup>
+                    </mfrac>
+                    <mspace width="1.0em"></mspace>
+                    <msub>
+                        <mi>a</mi>
+                        <mrow>
+                            <mn>2</mn>
+                            <mi>y</mi>
+                        </mrow>
+                    </msub>
+                    <mo>=</mo>
+                    <mo>−</mo>
+                    <mover>
+                        <mi>y</mi>
+                        <mo accent="true">̂</mo>
+                    </mover>
+                    <mfrac>
+                        <mrow>
+                            <mi>G</mi>
+                            <mi>r</mi>
+                            <msub>
+                                <mi>m</mi>
+                                <mn>1</mn>
+                            </msub>
+                        </mrow>
+                        <msup>
+                            <mrow>
+                                <mo stretchy="true" form="prefix">(</mo>
+                                <msqrt>
+                                    <mrow>
+                                        <msup>
+                                            <mi>r</mi>
+                                            <mn>2</mn>
+                                        </msup>
+                                        <mo>+</mo>
+                                        <msup>
+                                            <mi>ϵ</mi>
+                                            <mn>2</mn>
+                                        </msup>
+                                    </mrow>
+                                </msqrt>
+                                <mo stretchy="true" form="postfix">)</mo>
+                            </mrow>
+                            <mn>3</mn>
+                        </msup>
+                    </mfrac>
+                </mrow>
+            </math>
+            <br>
+            <p style="text-align: left;padding: 0px 30px;">
+                Since we have no way to perform a floating point divide quickly we are limited to 3 different operations
+                in our calculation.
+                Add/Subtract, Multiply and Inverse Square root (using the fast inverse square root algorithm).
+                The following operations are used to calculate the final result in our accelerator.
+                We first calculate the square of the radius using 2 adders to calculate the x and y displacement.
+                Then we multiply the outputs with themselves and take their sum which is the radius squared.
+            </p>
+            <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msup>
+                        <mi>r</mi>
+                        <mn>2</mn>
+                    </msup>
+                    <mo>=</mo>
+                    <msup>
+                        <mrow>
+                            <mo stretchy="true" form="prefix">(</mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mn>1</mn>
+                            </msub>
+                            <mo>−</mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mi>x</mi>
+                            </msub>
+                            <mo stretchy="true" form="postfix">)</mo>
+                        </mrow>
+                        <mn>2</mn>
+                    </msup>
+                    <mo>+</mo>
+                    <msup>
+                        <mrow>
+                            <mo stretchy="true" form="prefix">(</mo>
+                            <msub>
+                                <mi>y</mi>
+                                <mn>1</mn>
+                            </msub>
+                            <mo>−</mo>
+                            <msub>
+                                <mi>y</mi>
+                                <mn>2</mn>
+                            </msub>
+                            <mo stretchy="true" form="postfix">)</mo>
+                        </mrow>
+                        <mn>2</mn>
+                    </msup>
+                </mrow>
+            </math>
+            <br>
+            <p style="text-align: left;padding: 0px 30px;">
+                Once we have radius squared we try and calculate the inverse radius using the inverse square root of the
+                radius squared.
+            </p>
+            <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>r</mi>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mn>1</mn>
+                        <msqrt>
+                            <msup>
+                                <mi>r</mi>
+                                <mn>2</mn>
+                            </msup>
+                        </msqrt>
+                    </mfrac>
+                    <msup>
+                        <mi>r</mi>
+                        <mn>2</mn>
+                    </msup>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mn>1</mn>
+                        <mi>r</mi>
+                    </mfrac>
+                    <msup>
+                        <mi>r</mi>
+                        <mn>2</mn>
+                    </msup>
+                </mrow>
+            </math>
+            <br>
+            <p style="text-align: left;padding: 0px 30px;">
+                With the inverse square root of sum of radius squared and epsilon squared we can calculate the
+                previously stated accelration equation in the following manner:
+            </p>
+            <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub>
+                        <mi>a</mi>
+                        <mrow>
+                            <mn>1</mn>
+                            <mi>x</mi>
+                        </mrow>
+                    </msub>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mn>1</mn>
+                        <msqrt>
+                            <msup>
+                                <mi>r</mi>
+                                <mn>2</mn>
+                            </msup>
+                        </msqrt>
+                    </mfrac>
+                    <mrow>
+                        <mo stretchy="true" form="prefix">(</mo>
+                        <msub>
+                            <mi>x</mi>
+                            <mn>1</mn>
+                        </msub>
+                        <mo>−</mo>
+                        <msub>
+                            <mi>x</mi>
+                            <mn>2</mn>
+                        </msub>
+                        <mo stretchy="true" form="postfix">)</mo>
+                    </mrow>
+                    <mo>×</mo>
+                    <mi>G</mi>
+                    <mi>r</mi>
+                    <msub>
+                        <mi>m</mi>
+                        <mn>2</mn>
+                    </msub>
+                    <msup>
+                        <mrow>
+                            <mo stretchy="true" form="prefix">(</mo>
+                            <mfrac>
+                                <mn>1</mn>
+                                <msqrt>
+                                    <mrow>
+                                        <msup>
+                                            <mi>r</mi>
+                                            <mn>2</mn>
+                                        </msup>
+                                        <mo>+</mo>
+                                        <msup>
+                                            <mi>ϵ</mi>
+                                            <mn>2</mn>
+                                        </msup>
+                                    </mrow>
+                                </msqrt>
+                            </mfrac>
+                            <mo stretchy="true" form="postfix">)</mo>
+                        </mrow>
+                        <mn>3</mn>
+                    </msup>
+                </mrow>
+            </math>
+            <br>
+        </div>
+
+        <hr id="design">
+
+        <div style="text-align:center;">
+            <h2>Design</h2>
+            <p style="text-align: left;padding: 0px 30px;">
+                In developing the structure for this design we were fortunate to have previous examples done by other
+                students that had created similar projects. One of these examples was the GRAPE6 hardware simulator and
+                the “Gravitational N-Particle Simulator” simulation found on the course website. This 3D gravity
+                simulation had good references to using floating point on the FPGA and doing floating point conversions
+                and calculations - like float to int, int to float and other operations needed in the project such as
+                multiplication and addition. We would go on to use these floating point references in our 2D gravity
+                simulator. We were also interested in seeing if we could simulate how celestial bodies evolve over time
+                into clusters that later become planets or stars as well as other phenomena like slingshot maneuvers and
+                orbital structures.
+            </p>
+            <h3>High Level Design</h3>
+            <p style="text-align: left;padding: 0px 30px;">
+                The high level design of the project is that at each time step of computation, the ARM would send all of
+                the celestial bodies in the simulation to the FPGA where it would calculate the new acceleration for
+                each celestial body based on their mass and position from each other. Once the accelerations were
+                calculated, they were sent back to the ARM where it would do Euler integration to get a new velocity for
+                each body in the simulation. Doing the integration on the ARM allowed for us to save hardware resources
+                and increase the number of gravity solvers we could have running in parallel. The tradeoff was that
+                communicating back and forth from the FPGA and the ARM took time, slowing down the speed of the
+                calculations, but we believed the speed up from the FPGA calculations would make up for it. After
+                integrating, the celestial bodies would have their positions updated on the VGA screen and the HPS would
+                check for any new user inputs that would modify the simulation and update the simulation if needed.
+            </p>
+            <div style="text-align:center;">
+                <img class="img-rounded" id="hover-image-2" src="./Grav Sim_files/FPGACycle.png">
+                <h5>Software System Cycle</h5>
+            </div>
+            <p style="text-align: left;padding: 0px 30px;">
+                There were several tradeoffs that were made with this design for the simulation. This meant that the
+                hardware could be fully focused on the calculation of acceleration instead of needing to split the
+                hardware into two different accelerator designs that would need to be balanced. However, this cost us
+                some amount of time in increased communication between the HPS and FPGA. The main compromise in our
+                project was using floating numbers for our calculations. To support a wider range of values in our
+                simulation, we needed to use floating point instead of fixed point numbers, especially when doing
+                calculations on the scale of planets. This meant that we didn’t have to worry about overflow, just
+                floating point precision loss. The trade off was the increased time needed to do the floating point
+                calculations. Namely, the two complete cycles for addition and one cycle for multiplication of the
+                floating point numbers. This was a trade off we were willing to take even though it had consequences in
+                the design of the parts of the project which computed the interactions. One of the reasons that this
+                tradeoff was beneficial was the ability to use the fast inverse square root algorithm. This algorithm is
+                used to take the inverse square root of any number. It takes less hardware than the same algorithm with
+                fixed point numbers and uses the same number of cycles.
+            </p>
+            <h4>Floating Point</h4>
+            <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msup>
+                        <mrow>
+                            <mo stretchy="true" form="prefix">(</mo>
+                            <mo>−</mo>
+                            <mn>1</mn>
+                            <mo stretchy="true" form="postfix">)</mo>
+                        </mrow>
+                        <mrow>
+                            <mi>s</mi>
+                            <mi>i</mi>
+                            <mi>g</mi>
+                            <mi>n</mi>
+                        </mrow>
+                    </msup>
+                    <mo>×</mo>
+                    <msup>
+                        <mn>2</mn>
+                        <mrow>
+                            <mi>e</mi>
+                            <mi>x</mi>
+                            <mi>p</mi>
+                            <mo>−</mo>
+                            <mn>127</mn>
+                        </mrow>
+                    </msup>
+                    <mo>×</mo>
+                    <mrow>
+                        <mo stretchy="true" form="prefix">(</mo>
+                        <mn>1</mn>
+                        <mo>+</mo>
+                        <mi>.</mi>
+                        <mi>f</mi>
+                        <mi>r</mi>
+                        <mi>a</mi>
+                        <mi>c</mi>
+                        <mo stretchy="true" form="postfix">)</mo>
+                    </mrow>
+                </mrow>
+            </math>
+            <p style="text-align: left;padding: 0px 30px;">
+                Since our project uses floating point we should explain how floating point works. Floating point is a
+                type of scientific notation that is used to represent non-integer numbers in computers. Normal IEEE
+                single precision floating point has 3 parts. 1 bit that represents the sign, with 0 being positive and 1
+                being negative, 8 bits that are used to represent the exponent and 23 bits that represent the mantissa
+                or the precision of the location. The standard we are using is slightly different from this but works in
+                the same way, with slightly fewer bits in the mantissa. The 27 bit floating point standard we use has 1
+                sign bit, 8 exponent bits and 18 mantissa bits. This is the same as 32 bit but the mantissa is truncated
+                by 5 bits. This is because we want to minimize the number of DSPs needed to create a floating point
+                multiplier since only the mantissa bits actually need to be multiplied.
+            </p>
+            <h3>Hardware Design</h3>
+            <p style="text-align: left;padding: 0px 30px;">
+                The hardware design of this project started with a design discussion. This high level discussion
+                determined what part of the program that we wanted to accelerate. The most simple in terms of complexity
+                would be to just accelerate the calculation of the total acceleration on each celestial body in our
+                n-body simulation. After we decided to use floating point for our calculations, we decided to utilize
+                the floating point hardware library created by Bruce Land, which the project Mark Eiding and Brian
+                Curless created was also based on.
+            </p>
+            <p style="text-align: left;padding: 0px 30px;">
+                The accelerator design part of this project started with an initial design study. We had several ideas
+                on what designs could create the highest throughput accelerator for our design. We created a python
+                script that would help us determine the lowest iteration interval, which is how frequently a new
+                calculation can begin in a pipelined accelerator, for each design.
+            </p>
+            <p style="text-align: left;padding: 0px 30px;">
+                The first design was the most basic, a serial design which used a single floating point adder and
+                floating point multiplier and almost like a 2 instruction CPU where we fed data into the adder and
+                multiplier as fast as possible. This design didn’t attempt to pipeline the calculation at all, with the
+                upside being that it would take up the least amount of area, so we would be able to fit many of them
+                onto the FPGA very easily and the number on the FPGA could be adjusted more finely than the other
+                designs. This design had an iteration interval of 25 cycles to do a force calculation and add it to the
+                partial sum of all the previous accelerations in both the x and y axis. This meant that it had a
+                throughput of 0.04 calculations per cycle per accelerator.
+            </p>
+            <p style="text-align: left;padding: 0px 30px;">
+                The second design was a more complex design. It shared 1 adder for all the calculations besides updating
+                the partial sum of accelerations. It had as many multipliers as needed to give each calculation in
+                flight in the accelerator its own multiplier. This design had some upsides, with a 7 cycle iteration
+                interval, the throughput was higher than the serial design using only one more floating point adder.
+                However, it utilized 4 multipliers and its latency wasn’t significantly improved from the first design.
+            </p>
+            <p style="text-align: left;padding: 0px 30px;">
+                The third design was similar to the second design but it only utilized 1 shared adder for all the
+                calculations, including the summing of the acceleration. Unfortunately this significantly reduced the
+                iteration interval to 13 cycles, which decreased the number of required multipliers to 2 but also
+                decreased the throughput of each accelerator.
+            </p>
+
+            <p style="text-align: left;padding: 0px 30px;">
+                The final design was the simplest of the pipelined designs. We would use as many pieces of hardware as
+                was required to have an iteration interval of 1 cycle. This means that each cycle a new pair of
+                celestial bodies could be put into the solver and the acceleration for each body would be calculated by
+                the end of the solver’s pipeline. This meant that we needed lots of pipeline registers but we would have
+                the highest throughput per solver of any of the designs. The possible downside would be that we would be
+                unable to fit enough solvers on the FPGA to make up for the increased throughput.
+            </p>
+            <br>
+            <style type="text/css">
+                table.tableizer-table {
+                    font-size: 12px;
+                    border: 1px solid #CCC;
+                    font-family: Arial, Helvetica, sans-serif;
+                    /* width: 70%; */
+                }
+
+                .tableizer-table td {
+                    padding: 4px;
+                    margin: 3px;
+                    border: 1px solid #CCC;
+                }
+
+                .tableizer-table th {
+                    background-color: #104E8B;
+                    color: #FFF;
+                    font-weight: bold;
+                    text-align: center;
+                }
+            </style>
+            <div style="text-align:center;">
+                <table class="tableizer-table" style="width: 40%;">
+                    <thead>
+                        <tr class="tableizer-firstrow">
+                            <th>Max ALMs</th>
+                            <th> ALMs/Adder </th>
+                            <th> DSPs/Adder </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>30k</td>
+                            <td>406</td>
+                            <td>0</td>
+                        </tr>
+                        <tr class="tableizer-firstrow">
+                            <th>Max DSPs</th>
+                            <th>ALMs/Mult</th>
+                            <th>DSPs/mult</th>
+                        </tr>
+                        <tr>
+                            <td>81</td>
+                            <td>19</td>
+                            <td>1</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+            </div>
+
+            <p style="text-align: left;padding: 0px 30px;">
+                The final part of the design study was to estimate the number of hardware resources needed to put the
+                most accelerators of each type on the FPGA. We used the following hardware utilization numbers based on
+                the report of compiling the floating point adder and multiplier in the base of the VGA example project.
+                We used that project because it uses some extra DSP units to run the VGA screen. We wanted to use that
+                project for our final design so the max number of DSP units is slightly lower than the actual total on
+                the full DE1 SOC.
+
+            </p>
+            <br>
+            <div style="text-align:center;">
+
+                <table class="tableizer-table" style="width: 90%;">
+                    <thead>
+                        <tr class="tableizer-firstrow">
+                            <th>Name</th>
+                            <th>Total ALMs</th>
+                            <th>Total DSP</th>
+                            <th>Number of Acccels</th>
+                            <th>ALMs/Design</th>
+                            <th>DSPs/Design</th>
+                            <th>#Adders</th>
+                            <th>#Mult</th>
+                            <th>Throughput/Accel</th>
+                            <th>Total Throughput</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Serial</td>
+                            <td>29750</td>
+                            <td>70</td>
+                            <td>70</td>
+                            <td>425</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>0.04</td>
+                            <td>2.80</td>
+                        </tr>
+                        <tr>
+                            <td>Best Pipelined</td>
+                            <td>18648</td>
+                            <td>84</td>
+                            <td>21</td>
+                            <td>888</td>
+                            <td>4</td>
+                            <td>2</td>
+                            <td>4</td>
+                            <td>0.14</td>
+                            <td>3.00</td>
+                        </tr>
+                        <tr>
+                            <td>Limited Pipelined</td>
+                            <td>18204</td>
+                            <td>82</td>
+                            <td>41</td>
+                            <td>444</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>0.08</td>
+                            <td>3.15</td>
+                        </tr>
+                        <tr>
+                            <td>Max Pipelined</td>
+                            <td>17608</td>
+                            <td>72</td>
+                            <td>4</td>
+                            <td>4402</td>
+                            <td>18</td>
+                            <td>10</td>
+                            <td>18</td>
+                            <td>1.00</td>
+                            <td>4.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br>
+
+            <p style="text-align: left;padding: 0px 30px;">
+                Since the fully pipelined design seemed to have the highest throughput we chose that design to explore
+                further. We drew out a full pipeline diagram as seen below. Most signals in this design are 27 bit
+                floating point except for the mass shift register which contains a pair of 27 bit floating point
+                numbers. This design performs the acceleration calculations for both objects and increments the partial
+                acceleration sum. The gray vertical lines represent the different cycles in the data pipeline. The green
+                boxes represent the registers that transfer the data values between different cycles. There are also 4
+                operations, multiply, negate, add and fast inverse square root. The multiply and negate operations are
+                combinational. The fast inverse square root operation takes 4 cycles plus a combinational component on
+                the 5th cycle. The add operation takes 2 cycles with no combinational overhead on the 3rd cycle.
+            </p>
+            <p style="text-align: left;padding: 0px 30px;">
+                You might also notice that the solver has inputs that are input on the 16th cycle of the solver. This
+                design is deliberate since it allows for partial sums to be updated as frequently as every 2 cycles at
+                the cost of increased complexity to associate the inserted positions and partial sums of acceleration.
+            </p>
+
+            <div style="text-align:center;">
+                <img class="img-rounded" id="hover-image" src="./Grav Sim_files/accel-dpath-n2.svg">
+                <h5>Inital Pipeline Design (full speed)</h5>
+            </div>
+            <p style="text-align: left;padding: 0px 30px;">
+                At the end of the project our final pipelined solver looked like this. It is very similar to the
+                previous one but we don’t calculate acceleration for both of the objects at the same time. The reason
+                for that is the complexity of testing and debugging the hardware that could feed 4 of the accelerators
+                with enough data every cycle was too difficult to complete in the remaining time in the semester so we
+                sacrificed the 2x speedup to complete the design. The following design is much easier to feed since we
+                only need to update a single object’s acceleration at once.
+            </p>
+
+
+            <div style="text-align:center;">
+                <img class="img-rounded" id="hover-image-2" src="./Grav Sim_files/accel-dpath-n.svg">
+                <h5>Final Pipeline Design (half speed)</h5>
+            </div>
+            <p style="text-align: left;padding: 0px 30px;">
+                At the end of the project our final pipelined solver looked like this. It is very similar to the
+                previous one but we don’t calculate acceleration for both of the objects at the same time. The reason
+                for that is the complexity of testing and debugging the hardware that could feed 4 of the accelerators
+                with enough data every cycle was too difficult to complete in the remaining time in the semester so we
+                sacrificed the 2x speedup to complete the design. The following design is much easier to feed since we
+                only need to update a single object’s acceleration at once.
+            </p>
+            <p style="text-align: left;padding: 0px 30px;">
+                The restrictions on the final pipelined solver design are somewhat complex. Since the floating point add
+                takes 2 cycles, we can’t update the same point any faster than once every 2 cycles because we wouldn’t
+                be able to add up the partial sum fast enough to keep up with the solver. We also need to not update the
+                acceleration if a point is being compared with itself (since that acceleration would be large since we
+                multiply by 3E13). We decided on these restrictions because designing the hardware to skip sending a
+                pair of points in is more difficult and we assumed that we were very limited in ALM utilization.
+                Therefore, whenever the feeder detects that it is comparing the same point we set the mass to 0 which
+                means that the calculated acceleration will end up being 0 instead of 3E13.
+            </p>
+            <p style="text-align: left;padding: 0px 30px;">
+                The final design of the hardware that fed the celestial bodies into the solvers was a design and
+                algorithm we named, the “Neighborhood Algorithm,” that could even be used to parallelize gravity
+                simulations on running on multiple cores on a CPU. A diagram of the Algorithm is below.
+            </p>
+            <div style="text-align:center;">
+                <img class="img-rounded" id="hover-image-2" src="./Grav Sim_files/NeighborhoodAlgorithm.png">
+                <h5>Neighborhood Algorithm</h5>
+            </div>
+
+            <p style="text-align: left;padding: 0px 30px;">
+                The algorithm has the x and y position and mass sent from the HPS to the FPGA and then sends back the x
+                and y acceleration for each celestial body. We separate each solver into its own “neighborhood” that
+                contains “houses” that are celestial bodies. Each neighborhood has M10k blocks that hold the data for
+                the x and y position and x and y acceleration for each celestial body. The visitor center holds a copy
+                of the x and y positions and the mass of each celestial body.
+            </p>
+            <p style="text-align: left;padding: 0px 30px;">
+                The neighborhoods separate the celestial bodies into groups as seen in the diagram below where C is the
+                number of celestial bodies and N is the number of neighborhoods based on how many gravity solvers can be
+                created based on the available hardware. The C celestial bodies are then evenly split among each
+                neighborhood, with any spots not filled having a “fake” celestial body that is present in the M10k block
+                but never read or written to by the HPS.
+            </p>
+            <div style="text-align:center;">
+                <img class="img-rounded" id="hover-image-2" src="./Grav Sim_files/Neighbors.png">
+                <h5>Neighborhood Object Distribution</h5>
+            </div>
+            <p style="text-align: left;padding: 0px 30px;">
+                With the structure set up and placed in a city with N neighborhoods, to start a calculation cycle for a
+                celestial body, the visitor center sends over that celestial body as a “visitor” to all the
+                neighborhoods at the same time. The neighborhoods then calculate the acceleration from gravity between
+                the visitor and each celestial body, “house,” in the neighborhood and adds the new acceleration to the
+                sum of accelerations for that house. This is key since this allows for parallelization for calculating
+                the interaction between one visitor and all houses - or 1 celestial body and all other celestial bodies.
+                If the visitor is the same object as the celestial object being calculated against in the neighborhood,
+                the mass sent to the gravity solver for that calculation is sent as zero to avoid having infinite
+                acceleration from one over zero distance. Once all the celestial bodies in each neighborhood were
+                compared to the visitor, we sent a next_visitor signal to the “visitor center” to generate a new
+                visitor.
+            </p>
+            <p style="text-align: left;padding: 0px 30px;">
+                The state machine for the accelerator is shared between the visitor center and the neighborhoods. The
+                state machine mirrors the HPS’ behavior with its 5 states. The base state is reset where most of the
+                addresses/indices and state variables are set to 0. Most of the time is spent in the wait state where
+                the FPGA is waiting on the HPS for the trigger to move to the next state. Once the fill trigger is sent,
+                write enable being high, the FPGA yields control of the M10k memory addressing and data to the HPS so
+                that it can send position and mass data to the FPGA and fill the visitor and neighbor M10K blocks. After
+                we exit the fill state, the FPGA enters the calc state where we do all the comparisons between the
+                N-bodies and calculate the total acceleration for each one. When we are done, we move back to the wait
+                state and send the done signal to the FPGA and wait for the trigger to move to the send state. Once the
+                send signal is sent from the HPS, we let the HPS control the acceleration memory address and send back
+                the acceleration values for each celestial body.
+            </p>
+
+            <div style="text-align:center;">
+                <img class="img-rounded" id="hover-image-2" src="./Grav Sim_files/state_machine.png">
+                <h5>Hardware State Machine</h5>
+            </div>
+
+            <h3>Hardware Design Diffuclties</h3>
+            <p style="text-align: left;padding: 0px 30px;">
+                The hardest part to write was definitely the object feeder. The design requirements were complex and we had come up with several different designs that had different advantages and disadvantages. The first design we created was much more complex as it needed to meet the requirements set out by our full speed pipeline design. It used a sliding window design, where there was a semi-static window of 8 celestial bodies and an 8 length shift register to act as the sliding window. This design would have been significantly more complex to read into and out of memory and required a number of complicated control signals. However, it would have run at twice the speed since it would have been able to calculate the acceleration for both points in the calculation. 
+            </p>
+            <p style="text-align: left;padding: 0px 30px;">
+                The Neighborhood design we implemented in the end was half as fast since the acceleration was not saved both ways. This new design can be implemented on a multi-threading system and could be scaled up without any changes.
+            </p>
+            <h3>Software Design</h3>
+            <p style="text-align: left;padding: 0px 30px;">
+                The software for the project had a baseline structure of sending information to the FPGA, waiting for the calculations to finish up and be done and then reading the new data back to be displayed on the monitor. The first initial sending of information was the current position of every point. These values would be stored inside of M10K blocks in the ARM to be used later. New accelerations for every point were calculated with respect to every other point, and once these calculations were done the FPGA would signal the ARM of its completion and then proceed to send all of the values back, update the position based on the time step and then display the results.
+                </p>
+                <p style="text-align: left;padding: 0px 30px;">
+                The HPS side of this project was predicted to require a substantial amount of code due to the features we would be adding which included: a on-screen mouse, on-screen buttons, controllable celestial body, N-body gravity simulator, and displaying the celestial bodies on the VGA. The first step was converting the VGA and mouse code provided in the labs and created by Professor Bruce Land into their own files that could be imported into the main C code. This was to help with code organization as by the end of the project, we had over 3000 lines of C code.
+                </p>
+                <p style="text-align: left;padding: 0px 30px;">
+                Next we created the gravity simulator on the HPS system to be able to test the rest of the HPS features. We began with defining what each celestial body needed for its calculations on the HPS and FPGA and how we would get the data into the HPS. We decided to use .csv files to store and load data into the HPS to make it easier to swap out different maps and make it easier to create maps using Python code. After creating a test map with a hundred points and being able to load it into the HPS, we worked on creating a simulator that was O(N^2) and saved the accelerations for both of the celestial bodies being looked at. It also used the fast-inverse square root algorithm when calculating the forces between two different celestial bodies. The integrator was then written for the HPS simulator and a mini-demo was made to see how the HPS simulated the celestial bodies and the cycle required for drawing, simulating, and erasing celestial bodies. When drawing a celestial body, we decided to erase the exact location where it was before by coloring it in with black which matched the background since this allowed for it to be faster instead of erasing the entire screen each time we wanted to update the screen. We also checked to see if the celestial body was on the screen before drawing it since drawing it off screen would take up time and not produce any result.
+                </p>
+                <p style="text-align: left;padding: 0px 30px;">
+                The next step was adding a mouse to the screen. The mouse was added by getting the change in x and y of the mouse plugged into the FPGA and changing the location of the cursor based off of that, with boundaries for the edges. Following this, we use the left, middle, and right click of the mouse in conjunction with the current pixel location to see where we were clicking. With a working mouse, we added buttons to the screen that could be modified with different colors, text, and internal shapes. These were drawn with the VGA and when clicked inside with the mouse, it would check to see which one of the buttons was clicked and run the function associated with that button.
+                </p>
+                <p style="text-align: left;padding: 0px 30px;">
+                We ended up having nine buttons with a quit button that exited the simulation, a pause button to stop, a play button to continue the simulation, a reset button to reset the current simulation, a speed up button to increase the time step, a slow down button to decrease the time step, a clear button to toggle between erasing and not erasing the trails of the celestial body, a button to cycle through the different maps available in the simulator, and a button to use the HPS or FPGA to simulate the celestial bodies.
+                </p>
+                <p style="text-align: left;padding: 0px 30px;">
+                Having added the buttons and a HPS-based gravity simulation, we added functionality to have the mouse become a celestial body. By right clicking the mouse, it became a moveable celestial body that could have its mass increased or decreased using the left and middle mouse buttons respectively and could be turned off by clicking the right mouse button.
+                </p>
+                <p style="text-align: left;padding: 0px 30px;">
+                With the HPS side completed, code was added to interface with the FPGA and send the correct signals when needed if the FPGA was being used to simulate the celestial objects. This also included sending and receiving the celestial object data to and from the FPGA and converting the float values to register values and back using Mark Eiding’s code. An integrator was added for integrating accelerations from the FPGA. 
+                </p>
+            <h3>Software Design Diffuclties</h3>
+            <p style="text-align: left;padding: 0px 30px;">
+                Some of the difficult parts of the C code were integrating the mouse-based celestial body into the rest of the calculations without breaking arrays or drawings. This was done by adding the value of mouse_enabled, which signified if the mouse celestial body was enabled, and putting the mouse celestial body after the imported celestial objects. Another challenge was making sure the floats were being sent correctly though the PIO ports as we had issues not sending them with the float to reg and reg to float functions.
+                </p>
+
+
+        </div>
+
+
+
+        <hr id="testing">
+
+        <div style="text-align:center;">
+            <h2>Hardware Testing</h2>
+            <p style="text-align: left;padding: 0px 30px;">
+                One of the most important parts of the project was our hardware testing methodology. Like in our labs we created several Modelsim testbenches that modeled the real world utilization of our modules. These testbenches were seeded with real values that we used in our simulations. The first module to test was the most important, the pipelined acceleration solver. We tested this with many different and with different timings to see if it behaved correctly. The testing was very important as it exposed a small bug in the floating point hardware library that delayed the calculation of the inverse square one frame longer than expected. This also exposed several missing shift registers so that data didn’t get passed down with the calculation and the value of the calculation became dependent on the data of the next calculation.
+            </p>
+            <p style="text-align: left;padding: 0px 30px;">
+                Then we tested the neighborhood with Modelsim to show that it could stimulate the pipelined solver at maximum speed and that the results were saved correctly. This testing was much smoother than the testing of the pipelined solver and took less time. We similarly tested the visitor center to make sure that it generated visitors in the correct manner and that they were output in the correct format. Then we moved to testing the full functionality of the FPGA accelerator in Modelsim. We figured out that it has some limitations. It doesn’t perform the calculations correctly if there are less than 17 objects to calculate per solver. However, this number is small enough that it can be managed with the HPS. 
+            </p>
+            <p style="text-align: left;padding: 0px 30px;">
+                After we were happy with the results of the ModelSIm testing we moved onto testing it on the FPGA. The main issue we ran into with testing on the FPGA was actually reading data off of the FPGA and onto the HPS. We eventually figured out that the HPS wouldn’t read the data correctly if we treated it as floating point when reading off of the FPGA. So we based our solution on old C code that Bruce Land wrote. We read the data off of the FPGA as an unsigned integer and then converted from an unsigned integer representation into floating point in C. This solved the problem with not being able to read data off of the FPGA and let the accelerator work completely
+            </p>
+        </div>
+
+        <hr id="result">
+        
+        <div style="text-align:center;">
+            <h2>Results</h2>
+            <p style="text-align: left;padding: 0px 30px;">
+                In the end we saw a massive improvement in the computation time on the FPGA vs the ARM. The data can be seen below where the time is in milliseconds as well in the graph of the ARM and FPGA computation time for each frame.
+            </p>
+        <table class="tableizer-table">
+            <thead>
+                <tr class="tableizer-firstrow">
+                    <th>Num Bodies</th>
+                    <th>HPS time</th>
+                    <th>FPGA time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2200</td>
+                    <td>798434</td>
+                    <td>30100</td>
+                </tr>
+                <tr>
+                    <td>2000</td>
+                    <td>687000</td>
+                    <td>29100</td>
+                </tr>
+                <tr>
+                    <td>1500</td>
+                    <td>370000</td>
+                    <td>19500</td>
+                </tr>
+                <tr>
+                    <td>1000</td>
+                    <td>165386</td>
+                    <td>12500</td>
+                </tr>
+                <tr>
+                    <td>500</td>
+                    <td>43038</td>
+                    <td>6408</td>
+                </tr>
+                <tr>
+                    <td>400</td>
+                    <td>16794</td>
+                    <td>4277</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="text-align:center;">
+            <img class="img-rounded" src="./Grav Sim_files/ARMvsFPGAFPS.png">
+            <h5>Simulation FPS</h5>
+        </div>
+        <p style="text-align: left;padding: 0px 30px;">
+            As is evident from the graph we can see a massive improvement in the frame time on the FPGA vs the ARM. Each of these times were based on the maximum frame calculation from the ARM/FPGA in each frame cycle.
+        </p>
+        <p style="text-align: left;padding: 0px 30px;">
+            While the project overall functions very well there are a few small issues that are still present. One issue was a slight difference in the calculations for the bodies on the ARM vs the FPGA. We confirmed that all of the FPGA calculations were correct. However we noticed that when the ARM was used it would have a small issue when bodies got really close to each other and had the acceleration spike as  the radius approached zero, causing the two points to shoot off like an explosion. We had suspicions of where the issue was but were not able to find it. Other issues included flickering the screen during the simulations and some small issues in redrawing over buttons. 
+        </p>
+        </div>
+
+        <hr id="conclusion">
+        <div style="text-align:center;">
+            <h2>Conclusion</h2>
+            <p style="text-align: left;padding: 0px 30px;">
+                The design of our accelerator let us simulate almost 5 times more celestial bodies at 30 FPS than the HPS and let us use a maximum of 2200 celestial objects. This meant that we created an accelerator that outperformed the HPS program that performs the same calculation by at least a factor of 25x even with the significant communication latency between the HPS and FPGA. Our design was well thought out for the given parameters but we could have considered some different design decisions at the beginning of the project were we to do it again and we would have liked to have used our more powerful design that would have been two times as fast.
+                </p>
+                <p style="text-align: left;padding: 0px 30px;">
+                One of the big design decisions that we didn’t spend much time on was what part of the calculation we were going to do on the FPGA. We decided that the acceleration calculations would be done on the FPGA and then the acceleration would be used by the HPS to perform Euler integration. This calculation could have been done on the FPGA as well and would have created some interesting and different design decisions. One upside of this is that we only ever need to receive the position and mass data from the HPS once and can instead spend more of our time running the calculations. We can also make the HPS read concurrent with the FPGA’s calculations which can further increase the available number of cycles to perform calculations. The downsides from the hardware side is that it increases the amount of internal data movement and would need more hardware to perform the Euler integration calculations but we could improve the speed of those calculations compared to the HPS as well. We also would need to more carefully consider how to balance the hardware between the O(N) Euler integration algorithm and the O(N^2) n-body acceleration algorithm. This would also significantly increase the amount of data that we would need to store on the FPGA which might make the speed M10K block limited.
+                </p>
+                <p style="text-align: left;padding: 0px 30px;">
+                By the end of the project, we did indeed have an accelerator which functioned at reasonable standards with high enough accuracy to be used as a web toy. We know that this design has significant FP error so it wouldn’t be reliable in the real world and a higher precision design would be desired. 
+                </p>
+        </div>
+
+        <hr>
+        <div style="font-size:18px">
+            <h2>Parts List</h2>
+            <ul>
+                <li>DE1-SoC Devleopment Board - Provided in lab</li>
+                <li>VGA Monitor - Provided in lab</li>
+                <li>Mouse - Provided in lab</li>
+            </ul>
+            <h3></h3>
+        </div>
+        <hr>
+        <div style="font-size:18px">
+            <h2>References</h2>
+            <a href="https://people.ece.cornell.edu/land/courses/ece5760/FinalProjects/s2015/mje56_bwc65/mje56_bwc65/mje56_bwc65/index.html">Gravitational
+                N-Particle Simulator by Mark and Brian</a><br>
+            <a href="https://people.ece.cornell.edu/land/courses/ece5760/DE1_SOC/HPS_peripherials/Floating_Point_index.html">Floating
+                Point Libaray</a><br>
+            <a href="https://www.intel.com/content/www/us/en/docs/programmable/683323/18-1/inferring-ram-functions-from-hdl-code.html">DE1
+                SoC RAM Coding Styles</a><br>
+
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <h2>Appendix A: Permissions</h2>
+            <p>
+                "The group approves this report for inclusion on the course website."
+            </p>
+            <p>
+                "The group approves the video for inclusion on the course youtube channel."
+            </p>
+        </div>
+        <div class="row">
+            <h2>Code Appendix</h2>
+            <a href="https://github.com/rafCodes/GravSim">Github Repo</a><br>
+        </div>
+        <div class="row">
+            <h2>Intellectual property</h2>
+            <p style="text-align: left;padding: 0px 30px;">
+                We utilized Altera's IP generated m10k blocks. We also used code from Bruce Land’s floating point hardware library as well as Mark Eiding’s float to PIO register and PIO register to float. We used a well known algorithm Fast Inverse Square Root which is a well known public domain algorithm and isn’t protected by any licenses. We did not reverse engineer a design and there are no known patent or trademark issues. We did not have to sign any NDAs for this project. There are no patent opportunities for our project due to its lack of accuracy.
+            </p>
+        </div>
+
+    </div><!-- /.container -->
+
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./Grav Sim_files/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="./Grav Sim_files/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
+
+
+</body></html>

@@ -1,0 +1,31 @@
+body {
+    padding-top: 50px;
+}
+
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+hr { margin: 20px 0 20px 0; }
+
+.center-block {  
+    width:640px;
+  display: block;  
+  margin-right: auto;  
+  margin-left: auto;  
+}  
+
+#hover-container {
+  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.3);
+  /* height: 500px;
+  width: 2600px; */
+  overflow: hidden;
+}
+
+#image-hover {
+  transform-origin: center center;
+  /* object-fit: cover; */
+  height: 100%;
+  width: 100%;
+}

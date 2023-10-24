@@ -1,0 +1,42 @@
+#!/usr/bin/env python3
+
+import os
+os.system("gcc int2fp.c -o int2fp.out")
+os.system("./int2fp.out")
+os.system("rm -f int2fp.out")
+##readh = open("bin.txt","r")
+readh = open("vec.txt","r")
+writeh = open("refout.txt","w")
+
+m1 = 0
+m2 = 0
+x1 = 0
+x2 = 0
+y1 = 0
+y2 = 0
+eps = 7.45058*((10)**(-9))
+
+lines = readh.readlines()
+for line in lines:
+    print (line.split())
+    m1 = int(line.split()[0])
+    m2 = int(line.split()[1])
+    x1 = int(line.split()[2])
+    x2 = int(line.split()[3])
+    y1 = int(line.split()[4])
+    y2 = int(line.split()[5])
+
+    r = ((x1-x2)**(2) + (y1-y2)**(2))**(0.5)
+    dist = (r**2 + eps)**(0.5)
+    
+    a1 = (m2*(r))/((r**2 + eps)**(1.5))                       ## a1 = (m2*(r))/((r**2 + eps)**(1.5))
+    a2 = (m1*(r))/((r**2 + eps)**(1.5))
+    a1x = a1 * ((x2-x1)/r)
+    a1y = a1 * ((y2-y1)/r)
+    a2x = a2 * ((x1-x2)/r)
+    a2y = a2 * ((y1-y2)/r)
+    
+    writeh.write(str(a1x)+" "+str(a1y)+" "+str(a2x)+" "+str(a2y))
+
+readh.close()
+writeh.close()
