@@ -20,5 +20,4 @@ FpAdd.log: ./FpAdd_rtl.out ./FpAdd_ref.out ../scripts/makefile
 	diff -s FpAdd_rtl.out FpAdd_ref.out | tee -i FpAdd.log 
 clean:
 	rm -f ./*
-#no_test_vec:
-##${PRAC}/linelength
+	touch .gitignore
