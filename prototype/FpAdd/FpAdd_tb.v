@@ -15,7 +15,7 @@ module FpAdd_tb;
    
    initial
      begin
-        fh = $fopen("/home/omkar/projects/grav_sim/test/Fp_Add_tstvec.txt","r");
+        fh = $fopen("../test/Fp_Add_tstvec.txt","r");
         //oh = $fopen("../run/FpAddtemp.txt","w");
      end
 
