@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import struct
 import math
 
@@ -6,8 +7,8 @@ def float_to_ieee754(float_number):
     return struct.unpack('I', ieee754)[0]
 
 
-input_file = 'decimal.txt'
-output_file = 'binary.txt'
+input_file = '../test/fisqr_decimal.txt'
+output_file = 'fisqr_binary.txt'
 output_file_1 = 'expected_result.txt'
 try:
     with open(input_file, 'r') as input_file, open(output_file, 'w') as output_file, open(output_file_1, 'w') as output_file_1:

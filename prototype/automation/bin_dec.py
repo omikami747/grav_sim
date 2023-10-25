@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import struct
 
 def ieee754_to_float(binary_string):

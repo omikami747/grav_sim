@@ -32,7 +32,7 @@ end
 initial
 begin
 f1=$fopen("module_output.txt","w");
-f2=$fopen("binary.txt","r");
+f2=$fopen("fisqr_binary.txt","r");
 
 input_count = 'd5 + 'd2  ; // number of clock cycles for 3 inputs
 clk = 0;

@@ -1,0 +1,24 @@
+#!/usr/bin/env python3
+readfile1 = "expected_result.txt"
+readfile2 = "verilog_result.txt"
+writefile = "final_result.txt"
+compfile  = "comp_result.txt" 
+rf1 = open(readfile1,"r")
+rf2 = open(readfile2,"r")
+wf  = open(writefile,"w")
+comp  = open(compfile,"w")
+lines1 = rf1.readlines()
+lines2 = rf2.readlines()
+sat = 1
+for i in range(0,len(lines1)):
+    error = abs((float(lines1[i].strip()) - float(lines2[i].strip()))/(float(lines1[i].strip())))
+    if ( 100*error >= 1):
+        sat = 0
+        wf.write("high error percent = "+str(100*error)+" on line "+str(i+1)+" value expected = "+str(lines1[i].strip())+", value calculated = "+str(lines2[i].strip())+"\n")
+    else:
+        wf.write("low error percent = "+str(100*error)+" on line "+str(i+1)+" value expected = "+str(lines1[i].strip())+", value calculated = "+str(lines2[i].strip())+"\n")
+
+if (sat == 1):
+    comp.write("all errors lesser than 1%, good enough") 
+else:
+    comp.write("some errors greater than 1%, check final_result.txt for more details") 

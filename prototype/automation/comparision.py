@@ -1,7 +1,8 @@
+#!/usr/bin/env python3
 import openpyxl
 
 # Define the file paths for your data
-file1 = 'decimal.txt'
+file1 = '../test/decimal.txt'
 file2 = 'expected_result.txt'
 file3 = 'verilog_result.txt'
 
