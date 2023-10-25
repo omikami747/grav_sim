@@ -1,0 +1,4 @@
+high error percent = 100.0 on line 1 value expected = 0.949157995752499, value calculated = 6.929560825055793e-20
+low error percent = 0.02202399473165352 on line 2 value expected = 0.02778850071883642, value calculated = 0.0277823805809021
+low error percent = 0.00023988031610419012 on line 3 value expected = 0.27126281959038645, value calculated = 0.27126216888427734
+low error percent = 0.05654456780019467 on line 4 value expected = 0.2843595508653635, value calculated = 0.2841987609863281

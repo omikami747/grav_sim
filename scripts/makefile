@@ -33,7 +33,7 @@ fisqr.out: ${FISQR}/fast_inv_sqrt_tb.v ${FISQR}/fast_inv_sqrt.v ${FISQR}/fp_mul_
 	iverilog ${FISQR}/fast_inv_sqrt_tb.v ${FISQR}/fast_inv_sqrt.v ${FISQR}/fp_mul_new.v ${FISQR}/FpAdd.v -o fisqr.out
 module_output.txt: fisqr.out
 	./fisqr.out
-verilog_result.txt: ${FISQR}/bin_dec.py module_output.txt
+verilog_result.txt: ${FISQR}/bin_dec.py module_output.txt ${TEST}/fisqr_decimal.txt
 	./${FISQR}/bin_dec.py
 comp_result.txt: ${FISQR}/comp expected_result.txt verilog_result.txt
 	./${FISQR}/comp
