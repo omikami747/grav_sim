@@ -1,1 +1,1 @@
-some errors greater than 1%, check final_result.txt for more details
+all errors lesser than 1%, good enough
