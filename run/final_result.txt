@@ -1,9 +1,0 @@
-low error percent = 0.017914292228507992 on line 1 value expected = 0.949157995752499, value calculated = 0.9489879608154297
-low error percent = 0.1576934148030149 on line 2 value expected = 0.30151134457776363, value calculated = 0.30103588104248047
-low error percent = 0.12022649468414785 on line 3 value expected = 0.29373674772302333, value calculated = 0.2933835983276367
-low error percent = 0.13650932389258436 on line 4 value expected = 0.2966954145484634, value calculated = 0.29629039764404297
-low error percent = 0.033977779595428866 on line 5 value expected = 0.8804509063256238, value calculated = 0.8801517486572266
-low error percent = 0.06632128493950723 on line 6 value expected = 0.8606629658238704, value calculated = 0.8600921630859375
-low error percent = 0.028496423400514736 on line 7 value expected = 0.7088812050083358, value calculated = 0.70867919921875
-low error percent = 0.0247081940241808 on line 8 value expected = 0.7071067811865475, value calculated = 0.7069320678710938
-low error percent = 0.1450604180708709 on line 9 value expected = 0.3806934938134405, value calculated = 0.3801412582397461

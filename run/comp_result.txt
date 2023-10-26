@@ -1,1 +1,0 @@
-all errors lesser than 1%, good enough
