@@ -103,7 +103,7 @@ module FpAdd (
    reg [`EXP]    net_expt;
    reg [`EXP]    sm_shift;
    
-   always @(posedge clk or negedge rst)
+   always @(posedge clk )
      begin
         if (rst == 'b0)
           begin
